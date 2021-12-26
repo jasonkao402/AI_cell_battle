@@ -5,20 +5,26 @@ using UnityEngine;
 [System.Serializable]
 public class geneData
 {
-    public float maxhp, curhp, consume;
+    public float maxhp, curhp, consume, randomSeed;
 }
 
 public class ai_ctrl : MonoBehaviour{
-    public geneData d = new geneData();
+    geneData otherData;
+    public geneData data = new geneData();
+    Rigidbody2D rb;
     void Start(){
-        d.maxhp = d.curhp = Random.Range(50, 100);
-        d.consume = Random.Range(0.01f, 0.075f);
+        rb = GetComponent<Rigidbody2D>();
+        data.randomSeed = Random.Range(-2048f, 2048f);
+        data.maxhp = data.curhp = Random.Range(500, 1000);
+        data.consume = Random.Range(0.1f, 0.75f);
     }
     private void FixedUpdate() {
-        if(d.curhp > 0)
+        if(data.curhp > 0)
         {
-            transform.position += d.consume * (Vector3)Random.insideUnitCircle;
-            d.curhp -= d.consume;
+            //transform.rotation *= Quaternion.AngleAxis(10f*(Mathf.PerlinNoise(data.randomSeed+Time.time, 0)-0.5f), Vector3.forward);
+            rb.AddTorque(0.1f*(Mathf.PerlinNoise(data.randomSeed+Time.time, 0)-0.5f));
+            rb.AddForce(transform.right * data.consume);// += transform.right;
+            data.curhp -= data.consume;
         }
         else
         {
@@ -26,6 +32,24 @@ public class ai_ctrl : MonoBehaviour{
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        d.curhp += other.transform.localScale.x * 50f;
+        Debug.Log(other.gameObject.name);
+        data.curhp += other.transform.localScale.x * 50f;
+        Destroy(other.gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        otherData = other.gameObject.GetComponent<ai_ctrl>().data;
+        if(otherData != null)
+        {
+            if(data.curhp >  otherData.curhp)
+            {
+                data.curhp += otherData.curhp*0.2f;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                otherData.curhp += data.curhp*0.2f;
+                Destroy(gameObject);
+            }
+        }
     }
 }
