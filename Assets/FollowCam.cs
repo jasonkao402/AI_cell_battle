@@ -6,10 +6,6 @@ public class FollowCam : MonoBehaviour
 {
     public GameObject tgt;
     public float l;
-    void Start()
-    {
-        
-    }
     void FixedUpdate()
     {
         if(tgt)
@@ -17,5 +13,8 @@ public class FollowCam : MonoBehaviour
         else{
             tgt = FindObjectOfType<ai_ctrl>().gameObject;
         }
+    }
+    private void Update() {
+        Camera.main.orthographicSize += Input.GetAxisRaw("Mouse ScrollWheel");
     }
 }
