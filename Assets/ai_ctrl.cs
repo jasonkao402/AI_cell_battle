@@ -34,7 +34,7 @@ public class ai_ctrl : MonoBehaviour{
         }
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.name);
+        //Debug.Log(other.gameObject.name);
         data.curhp += other.transform.localScale.x * 50f;
         Destroy(other.gameObject);
     }

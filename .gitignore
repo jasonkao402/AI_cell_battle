@@ -35,3 +35,11 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+venv/Lib/*
+
+*.exe
+venv/Scripts/__pycache__/pywin32_testall.cpython-39.pyc
+venv/Scripts/__pycache__/pywin32_postinstall.cpython-39.pyc
+venv/pyvenv.cfg
+*.log

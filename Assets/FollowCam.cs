@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FollowCam : MonoBehaviour
 {
+    Collider2D col;
     public GameObject tgt;
     public float l;
     void FixedUpdate()
@@ -16,5 +17,10 @@ public class FollowCam : MonoBehaviour
     }
     private void Update() {
         Camera.main.orthographicSize += Input.GetAxisRaw("Mouse ScrollWheel");
+        if(Input.GetMouseButtonDown(0))
+        {
+            col = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 2);
+            if(col != null) tgt = col.gameObject;
+        }
     }
 }
