@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class geneData
 {
-    public float maxhp, curhp, consume, randomSeed;
+    public float maxhp, curhp, consume;
 }
 
 public class ai_ctrl : MonoBehaviour{
@@ -15,18 +15,18 @@ public class ai_ctrl : MonoBehaviour{
     Rigidbody2D rb;
     void Start(){
         rb = GetComponent<Rigidbody2D>();
-        data.randomSeed = Random.Range(-2048f, 2048f);
-        data.maxhp = data.curhp = Random.Range(250, 1000);
+        //data.randomSeed = Random.Range(-2048f, 2048f);
+        data.maxhp = data.curhp = Random.Range(1250, 2000);
         data.consume = Random.Range(0.1f, 1f);
     }
     private void FixedUpdate() {
         if(data.curhp > 0)
         {
-            //transform.rotation *= Quaternion.AngleAxis(10f*(Mathf.PerlinNoise(data.randomSeed+Time.time, 0)-0.5f), Vector3.forward);
-            rb.AddTorque(0.5f*(Mathf.PerlinNoise(data.randomSeed+Time.time, 0)-0.5f));
-            rb.AddForce(transform.right * data.consume);// += transform.right;
-            transform.localScale = Vector3.one * (data.curhp+200f) * 0.002f;
-            data.curhp -= data.consume;
+            // transform.rotation *= Quaternion.AngleAxis(10f*(Mathf.PerlinNoise(data.randomSeed+Time.time, 0)-0.5f), Vector3.forward);
+            // rb.AddTorque(data.turn*(Mathf.PerlinNoise(data.randomSeed+Time.time, 0)-0.5f));
+            // rb.AddForce(transform.right * data.consume);// += transform.right;
+            // transform.localScale = Vector3.one * (data.curhp+200f) * 0.002f;
+            // data.curhp -= data.consume;
         }
         else
         {
