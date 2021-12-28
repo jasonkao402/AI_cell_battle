@@ -2,31 +2,22 @@
     "EatOther": {
         "checkpoints": [
             {
-                "steps": 499990,
-                "file_path": "results\\ppo\\EatOther\\EatOther-499990.onnx",
-                "reward": 1440.4037090567656,
-                "creation_time": 1640556077.487869,
+                "steps": 153244,
+                "file_path": "results\\ppo\\EatOther\\EatOther-153244.onnx",
+                "reward": 1407.8494782881303,
+                "creation_time": 1640589656.3059878,
                 "auxillary_file_paths": [
-                    "results\\ppo\\EatOther\\EatOther-499990.pt"
-                ]
-            },
-            {
-                "steps": 500054,
-                "file_path": "results\\ppo\\EatOther\\EatOther-500054.onnx",
-                "reward": 1440.4037090567656,
-                "creation_time": 1640556077.5338817,
-                "auxillary_file_paths": [
-                    "results\\ppo\\EatOther\\EatOther-500054.pt"
+                    "results\\ppo\\EatOther\\EatOther-153244.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 500054,
+            "steps": 153244,
             "file_path": "results\\ppo\\EatOther.onnx",
-            "reward": 1440.4037090567656,
-            "creation_time": 1640556077.5338817,
+            "reward": 1407.8494782881303,
+            "creation_time": 1640589656.3059878,
             "auxillary_file_paths": [
-                "results\\ppo\\EatOther\\EatOther-500054.pt"
+                "results\\ppo\\EatOther\\EatOther-153244.pt"
             ]
         }
     },

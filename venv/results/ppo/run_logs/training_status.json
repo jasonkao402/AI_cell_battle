@@ -1,0 +1,29 @@
+{
+    "EatOther": {
+        "checkpoints": [
+            {
+                "steps": 267850,
+                "file_path": "results\\ppo\\EatOther\\EatOther-267850.onnx",
+                "reward": null,
+                "creation_time": 1640574381.5203648,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatOther\\EatOther-267850.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 267850,
+            "file_path": "results\\ppo\\EatOther.onnx",
+            "reward": null,
+            "creation_time": 1640574381.5203648,
+            "auxillary_file_paths": [
+                "results\\ppo\\EatOther\\EatOther-267850.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

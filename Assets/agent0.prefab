@@ -107,6 +107,8 @@ MonoBehaviour:
     maxhp: 0
     curhp: 0
     consume: 0
+    max_killCD: 150
+    cur_killCD: 0
 --- !u!50 &-6451632905535474630
 Rigidbody2D:
   serializedVersion: 4
@@ -118,8 +120,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 4
   m_LinearDrag: 1
   m_AngularDrag: 20
   m_GravityScale: 0
@@ -157,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 8
+    VectorObservationSize: 28
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -166,7 +168,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 52623057995d0f9439cc2c0db1d74788, type: 3}
   m_InferenceDevice: 3
   m_BehaviorType: 0
   m_BehaviorName: EatOther

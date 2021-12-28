@@ -8,50 +8,66 @@ using Unity.MLAgents.Sensors;
 public class ml_ctrl : Agent
 {
     // Start is called before the first frame update
+    const int NumRay = 24, deg = 15; 
     ml_ctrl tmp;
     geneData otherData;
     public geneData data = new geneData();
     Rigidbody2D rb;
+    SpriteRenderer sr;
     Collider2D tcol;
-    void Start()
-    {
-        
-    }
+    RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
+    string ID;
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
-        data.maxhp = data.curhp = Random.Range(1500f, 2000f);
+        sr = GetComponent<SpriteRenderer>();
+        data.maxhp = data.curhp = Random.Range(500f, 1000f);
+        data.cur_killCD = data.max_killCD;
         data.consume = Random.Range(1f, 1.5f);
+        sr.color = Random.ColorHSV(0,1,1,1,1,1,1,1);
+        for(int i = 0; i<4; i++)
+            ID += (char)('A'+Random.Range(0, 26));
+        gameObject.name = ID;
     }
+
     public override void OnEpisodeBegin()
     {
         data.curhp = data.maxhp;
         transform.localPosition = 7.5f*Random.insideUnitCircle;
     }
+    private void FixedUpdate() {
+        for(int i = 0; i<NumRay; i++)
+            Debug.DrawRay(transform.position, Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right);
+    }
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.localScale.x);
-        tcol = Physics2D.OverlapCircle(transform.position, 4);
-        if(tcol) {
-            //sensor.AddObservation(true);
-            sensor.AddObservation(tcol.transform.localPosition);
-            sensor.AddObservation(tcol.transform.localScale.x);
-        }
-        else{
-            //sensor.AddObservation(false);
-            sensor.AddObservation(Vector3.forward);
-            sensor.AddObservation(0);
+        for(int i = 0; i<NumRay; i++)
+        {
+            ray2D[i] = Physics2D.Raycast(transform.position, Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right);
+            sensor.AddObservation(Mathf.Min(3f, ray2D[i].distance));
         }
     }
     public override void OnActionReceived(ActionBuffers actions)
     {
         //rb.AddTorque(data.turn * actions.ContinuousActions[0]);
         rb.AddForce(data.consume * new Vector2(actions.ContinuousActions[0], actions.ContinuousActions[1]) );
-        transform.localScale = Vector3.one * (data.curhp+300f) * 0.0015f;
+        transform.localScale = Vector3.one * (data.curhp+500f) * 0.002f;
         data.curhp -= data.consume;
-        if(data.curhp < 0)
+        data.cur_killCD -= 1;
+        if(data.curhp < 0){
+            //starve
+            AddReward(-data.maxhp/data.consume);
             EndEpisode();
+        }
+        else if(data.curhp > 3*data.maxhp){
+            //split
+            data.cur_killCD = data.max_killCD;
+            AddReward(data.curhp);
+            data.curhp = data.maxhp;
+            Instantiate(gameObject, transform.position, Quaternion.identity, transform.parent).gameObject.name+=ID;
+        }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -70,16 +86,17 @@ public class ml_ctrl : Agent
         if(tmp != null)
         {
             otherData = tmp.data;
-            if(data.curhp >  otherData.curhp)
+            if(data.curhp >  otherData.curhp && data.cur_killCD < 0)
             {
+                data.cur_killCD = data.max_killCD;
                 data.curhp += otherData.curhp*0.2f;
                 AddReward(otherData.curhp);
                 //Destroy(other.gameObject);
             }
-            else
+            else if(otherData.cur_killCD < 0)
             {
                 otherData.curhp += data.curhp*0.2f;
-                AddReward(-0.333f*data.curhp);
+                SetReward(0);
                 EndEpisode();
                 //Destroy(gameObject);
             }

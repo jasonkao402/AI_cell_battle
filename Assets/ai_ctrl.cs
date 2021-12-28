@@ -6,6 +6,7 @@ using UnityEngine;
 public class geneData
 {
     public float maxhp, curhp, consume;
+    public int max_killCD, cur_killCD;
 }
 
 public class ai_ctrl : MonoBehaviour{
