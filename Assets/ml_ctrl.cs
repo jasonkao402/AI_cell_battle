@@ -15,7 +15,10 @@ public class ml_ctrl : Agent
     Rigidbody2D rb;
     SpriteRenderer sr;
     Collider2D tcol;
-    RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
+    //RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
+    Vector3 t;
+    [SerializeField]
+    float[] vision = new float[NumRay];
     string ID;
     public override void Initialize()
     {
@@ -36,8 +39,11 @@ public class ml_ctrl : Agent
         transform.localPosition = 7.5f*Random.insideUnitCircle;
     }
     private void FixedUpdate() {
-        for(int i = 0; i<NumRay; i++)
-            Debug.DrawRay(transform.position, Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right);
+        
+        for(int i = 0; i<NumRay; i++){
+            t = Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right;
+            Debug.DrawRay(transform.position + 0.3f * t, t * vision[i]);
+        }
     }
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -45,8 +51,9 @@ public class ml_ctrl : Agent
         sensor.AddObservation(transform.localScale.x);
         for(int i = 0; i<NumRay; i++)
         {
-            ray2D[i] = Physics2D.Raycast(transform.position, Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right);
-            sensor.AddObservation(Mathf.Min(3f, ray2D[i].distance));
+            t = Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right;
+            vision[i] = Mathf.Min(3, Physics2D.Raycast(transform.position + 0.3f*t, t).distance);
+            sensor.AddObservation(vision[i]);
         }
     }
     public override void OnActionReceived(ActionBuffers actions)
@@ -61,12 +68,14 @@ public class ml_ctrl : Agent
             AddReward(-data.maxhp/data.consume);
             EndEpisode();
         }
-        else if(data.curhp > 3*data.maxhp){
+        else if(data.curhp > 4*data.maxhp){
             //split
             data.cur_killCD = data.max_killCD;
             AddReward(data.curhp);
             data.curhp = data.maxhp;
-            Instantiate(gameObject, transform.position, Quaternion.identity, transform.parent).gameObject.name+=ID;
+            GameObject child = Instantiate(gameObject, transform.position, Quaternion.identity, transform.parent);
+            child.gameObject.name+=ID;
+            child.GetComponent<SpriteRenderer>().color = sr.color;
         }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
