@@ -47,3 +47,5 @@ venv/Scripts/results/ppo/EatOther/*.onnx
 venv/Scripts/results/ppo/EatOther/*.pt
 venv/Scripts/results/ppo/run_logs/timers.json
 venv/Scripts/results/ppo/run_logs/training_status.json
+venv/results/ppo/EatOther/*.pt
+venv/results/ppo/EatOther/*.onnx

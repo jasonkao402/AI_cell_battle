@@ -2,13 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class geneData
-{
-    public float maxhp, curhp, consume;
-    public int max_killCD, cur_killCD;
-}
-
 public class ai_ctrl : MonoBehaviour{
     ai_ctrl tmp;
     geneData otherData;

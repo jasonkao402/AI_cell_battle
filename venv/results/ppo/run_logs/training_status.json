@@ -2,22 +2,31 @@
     "EatOther": {
         "checkpoints": [
             {
-                "steps": 267850,
-                "file_path": "results\\ppo\\EatOther\\EatOther-267850.onnx",
-                "reward": null,
-                "creation_time": 1640574381.5203648,
+                "steps": 499988,
+                "file_path": "results\\ppo\\EatOther\\EatOther-499988.onnx",
+                "reward": 449.63393051573166,
+                "creation_time": 1641598054.5422604,
                 "auxillary_file_paths": [
-                    "results\\ppo\\EatOther\\EatOther-267850.pt"
+                    "results\\ppo\\EatOther\\EatOther-499988.pt"
+                ]
+            },
+            {
+                "steps": 500052,
+                "file_path": "results\\ppo\\EatOther\\EatOther-500052.onnx",
+                "reward": 449.63393051573166,
+                "creation_time": 1641598054.5952742,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatOther\\EatOther-500052.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 267850,
+            "steps": 500052,
             "file_path": "results\\ppo\\EatOther.onnx",
-            "reward": null,
-            "creation_time": 1640574381.5203648,
+            "reward": 449.63393051573166,
+            "creation_time": 1641598054.5952742,
             "auxillary_file_paths": [
-                "results\\ppo\\EatOther\\EatOther-267850.pt"
+                "results\\ppo\\EatOther\\EatOther-500052.pt"
             ]
         }
     },

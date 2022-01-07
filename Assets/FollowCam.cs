@@ -16,7 +16,7 @@ public class FollowCam : MonoBehaviour
         Camera.main.orthographicSize += Input.GetAxisRaw("Mouse ScrollWheel");
         if(Input.GetMouseButtonDown(0))
         {
-            col = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 1);
+            col = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 1, 1|1<<2);
             if(col != null) tgt = col.gameObject;
         }
     }

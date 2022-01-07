@@ -12,7 +12,7 @@ public class foodSpawn : MonoBehaviour
     private void Start() {
         for(int i = 0; i<agent_amt; i++)
         {
-            Instantiate(agent, food_range*Random.insideUnitCircle, Quaternion.identity, transform);
+            Instantiate(agent, transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
         }
     }
     void Update()
@@ -22,7 +22,7 @@ public class foodSpawn : MonoBehaviour
             food_curcd = food_maxcd;
             for(int i = 0; i<food_amt; i++)
             {
-                Instantiate(food, food_range*Random.insideUnitCircle, Quaternion.identity, transform);
+                Instantiate(food, transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
             }
         }
         food_curcd -= Time.deltaTime;
