@@ -146,9 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfCopy: {fileID: 5438523987746257937}
   data:
-    maxhp: 300
+    maxhp: 800
     curhp: 0
-    consume: 0.02
+    consume: 1.2
     sensor: 8
     turnRate: -1.2
   scanCD: 99

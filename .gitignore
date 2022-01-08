@@ -46,3 +46,6 @@ venv/pyvenv.cfg
 venv/results/ppo/*
 *.onnx
 *.pt
+*.0
+run_logs/
+

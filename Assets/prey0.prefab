@@ -103,7 +103,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 20000
+  MaxStep: 10000
   selfCopy: {fileID: 2966767148609115222}
   data:
     maxhp: 1024
@@ -111,7 +111,6 @@ MonoBehaviour:
     consume: 1.2
     sensor: 8
     turnRate: -1
-  ID: 
 --- !u!50 &-6451632905535474630
 Rigidbody2D:
   serializedVersion: 4

@@ -573,5 +573,5 @@ MonoBehaviour:
   food_maxcd: 999
   food_range: 20
   food_amt: 0
-  prey_amt: 30
-  predator_amt: 1
+  prey_amt: 32
+  predator_amt: 4
