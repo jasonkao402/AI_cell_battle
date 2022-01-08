@@ -2,24 +2,6 @@
     "EatPrey": {
         "checkpoints": [
             {
-                "steps": 14774,
-                "file_path": "results\\ppo\\EatPrey\\EatPrey-14774.onnx",
-                "reward": 8785.2957453602,
-                "creation_time": 1641657031.4862998,
-                "auxillary_file_paths": [
-                    "results\\ppo\\EatPrey\\EatPrey-14774.pt"
-                ]
-            },
-            {
-                "steps": 87271,
-                "file_path": "results\\ppo\\EatPrey\\EatPrey-87271.onnx",
-                "reward": 10535.073717828025,
-                "creation_time": 1641657521.8222547,
-                "auxillary_file_paths": [
-                    "results\\ppo\\EatPrey\\EatPrey-87271.pt"
-                ]
-            },
-            {
                 "steps": 220711,
                 "file_path": "results\\ppo\\EatPrey\\EatPrey-220711.onnx",
                 "reward": null,
@@ -45,15 +27,33 @@
                 "auxillary_file_paths": [
                     "results\\ppo\\EatPrey\\EatPrey-595281.pt"
                 ]
+            },
+            {
+                "steps": 999966,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-999966.onnx",
+                "reward": 1504.5380842755549,
+                "creation_time": 1641662526.3924098,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-999966.pt"
+                ]
+            },
+            {
+                "steps": 1000030,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-1000030.onnx",
+                "reward": 1504.5380842755549,
+                "creation_time": 1641662526.4424655,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-1000030.pt"
+                ]
             }
         ],
         "final_checkpoint": {
-            "steps": 595281,
+            "steps": 1000030,
             "file_path": "results\\ppo\\EatPrey.onnx",
-            "reward": null,
-            "creation_time": 1641661870.3325324,
+            "reward": 1504.5380842755549,
+            "creation_time": 1641662526.4424655,
             "auxillary_file_paths": [
-                "results\\ppo\\EatPrey\\EatPrey-595281.pt"
+                "results\\ppo\\EatPrey\\EatPrey-1000030.pt"
             ]
         }
     },

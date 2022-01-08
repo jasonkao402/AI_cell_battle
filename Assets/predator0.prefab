@@ -112,8 +112,8 @@ MonoBehaviour:
   data:
     maxhp: 2048
     curhp: 0
-    consume: 15
-    sensor: 12
+    consume: 12
+    sensor: 16
     turnRate: -3
 --- !u!50 &7285269761912614808
 Rigidbody2D:
