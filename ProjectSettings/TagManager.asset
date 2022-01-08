@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wall_tag
   - food_tag
+  - predator tag
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - prey_group
+  - predator_group
   - 
   - 
   - 

@@ -5,11 +5,10 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 
-public class ml_ctrl : Agent
+public class predator_ctrl : Agent
 {
     // Start is called before the first frame update
-    const int NumRay = 24, deg = 15; 
-    public GameObject selfCopy;
+    const int deg = 15; 
     ml_ctrl tmp;
     geneData otherData;
     public geneData data = new geneData();
@@ -43,10 +42,23 @@ public class ml_ctrl : Agent
         data.curhp = data.maxhp;
         transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
     }
+    // private void FixedUpdate() {
+        
+    //     for(int i = 0; i<NumRay; i++){
+    //         t = Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right;
+    //         Debug.DrawRay(transform.position + t*sightOs*transform.localScale.x, t * vision[i]);
+    //     }
+    // }
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.localScale.x);
+        // for(int i = 0; i<NumRay; i++)
+        // {
+        //     t = Quaternion.AngleAxis(i * deg, Vector3.forward) * Vector2.right;
+        //     vision[i] = Physics2D.Raycast(transform.position + t*sightOs*transform.localScale.x, t, 4).distance;
+        //     sensor.AddObservation(vision[i]);
+        // }
     }
     public override void OnActionReceived(ActionBuffers actions)
     {
@@ -59,9 +71,8 @@ public class ml_ctrl : Agent
             //starve
             EndEpisode();
         }
-        else if(data.curhp > 3*data.maxhp){
+        else if(data.curhp > 5*data.maxhp){
             //split
-            Instantiate(selfCopy, transform.position, Quaternion.identity, transform.parent);
             AddReward(data.curhp);
             data.curhp = data.maxhp;
         }
@@ -74,7 +85,7 @@ public class ml_ctrl : Agent
     }
     private void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log(other.gameObject.name);
-        data.curhp += other.transform.localScale.x * 100f;
+        data.curhp += other.transform.localScale.x * 20f;
         AddReward(other.transform.localScale.x * 10f);
         Destroy(other.gameObject);
     }
@@ -91,10 +102,10 @@ public class ml_ctrl : Agent
             tmp = other.gameObject.GetComponent<ml_ctrl>();
             if(tmp != null)
             {
-                //share food
-                otherData = tmp.data;
-                data.curhp = (data.curhp+otherData.curhp)*0.5f;
-                AddReward((data.curhp+otherData.curhp)*0.2f);
+                //eat
+                otherData.curhp = 0;
+                data.curhp += otherData.curhp*0.5f;
+                AddReward(otherData.curhp*0.5f);
             }
         }
     }

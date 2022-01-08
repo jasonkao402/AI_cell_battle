@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class foodSpawn : MonoBehaviour
 {
-    public GameObject food, agent;
+    public GameObject food, prey, predator;
     public float food_maxcd, food_range;
-    public int food_amt, agent_amt;
+    public int food_amt, prey_amt, predator_amt;
     float food_curcd;
     // Update is called once per frame
     private void Start() {
-        for(int i = 0; i<agent_amt; i++)
+        for(int i = 0; i<prey_amt; i++)
         {
-            Instantiate(agent, transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
+            Instantiate(prey, transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
+        }
+        for(int i = 0; i<predator_amt; i++)
+        {
+            Instantiate(predator, transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
         }
     }
     void Update()
