@@ -48,6 +48,7 @@ public class ml_ctrl : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(transform.localRotation);
         sensor.AddObservation(rb.velocity);
         sensor.AddObservation(transform.localScale.x);
     }
