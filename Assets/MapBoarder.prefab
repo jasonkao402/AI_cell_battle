@@ -49,14 +49,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   food: {fileID: 5468076885301964017, guid: 65f9f336d9f791c4bbec0c248320caf8, type: 3}
-  prey: {fileID: 2966767148609115222, guid: f7f8563c437bf8b4693805099d9d89e6, type: 3}
+  prey: {fileID: 5438523987746257937, guid: 3a854a715fe519146a2f306816e2f883, type: 3}
   predator: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
     type: 3}
-  food_maxcd: 6
+  food_maxcd: 8
   food_range: 70
-  food_amt: 10
+  food_amt: 14
   prey_amt: 80
-  predator_amt: 1
+  predator_amt: 3
 --- !u!1 &3990434874477348252
 GameObject:
   m_ObjectHideFlags: 0

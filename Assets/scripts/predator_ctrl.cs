@@ -10,33 +10,25 @@ public class predator_ctrl : Agent
     // Start is called before the first frame update
     const int deg = 15;
     public GameObject selfCopy, killeff;
-    ml_ctrl tmp;
-    geneData otherData;
+    prey_ctrl tmp_p;
     public geneData data = new geneData();
     Rigidbody2D rb;
     SpriteRenderer sr;
     Collider2D tcol;
-    //RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
-    Vector3 t;
     RayPerceptionSensorComponentBase[] sen = new RayPerceptionSensorComponentBase[2];
-    [SerializeField]
-    //float[] vision = new float[NumRay];
     string ID;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         sen = GetComponents<RayPerceptionSensorComponentBase>();
+        for(int i = 0; i<2; i++)
+            ID += (char)('A'+Random.Range(0, 26));
+        gameObject.name = $"w_{ID}";
     }
     public override void Initialize()
     {
-        data.maxhp = data.curhp = 2048;
-        data.consume = 5f;
         sen[0].RayLength = data.sensor;
         sen[1].RayLength = data.sensor;
-        //sr.color = Random.ColorHSV(0,1,1,1,1,1,1,1);
-        for(int i = 0; i<3; i++)
-            ID += (char)('A'+Random.Range(0, 26));
-        gameObject.name = ID;
     }
 
     public override void OnEpisodeBegin()
@@ -60,7 +52,7 @@ public class predator_ctrl : Agent
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
         transform.localScale = Vector3.one * (data.curhp+3000f)/data.maxhp;
-        data.curhp -= data.consume * 0.1f;
+        data.curhp -= data.consume * 0.02f;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
@@ -101,13 +93,13 @@ public class predator_ctrl : Agent
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
-        tmp = other.gameObject.GetComponent<ml_ctrl>();
-        if(tmp != null)
+        tmp_p = other.gameObject.GetComponent<prey_ctrl>();
+        if(tmp_p != null)
         {
             //eat
-            data.curhp += tmp.data.curhp*0.17f;
-            AddReward(tmp.data.curhp*0.17f);
-            tmp.data.curhp = 0;
+            data.curhp += tmp_p.data.curhp*0.17f;
+            AddReward(tmp_p.data.curhp*0.17f);
+            tmp_p.data.curhp = 0;
             Instantiate(killeff, transform.position, Quaternion.identity);
         }
     }

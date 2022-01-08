@@ -7,7 +7,6 @@ using Unity.MLAgents.Sensors;
 
 public class ml_ctrl : Agent
 {
-    // Start is called before the first frame update
     public static int population;
     const int deg = 15; 
     public GameObject selfCopy;
@@ -17,32 +16,25 @@ public class ml_ctrl : Agent
     Rigidbody2D rb;
     SpriteRenderer sr;
     Collider2D tcol, esccol;
-    //RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
-    Vector3 t;
     RayPerceptionSensorComponentBase sen;
-    [SerializeField]
-    //float[] vision = new float[NumRay];
     string ID;
     private void Awake() {
         population = 0;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         sen = GetComponent<RayPerceptionSensorComponentBase>();
+        for(int i = 0; i<2; i++)
+            ID += (char)('A'+Random.Range(0, 26));
+        gameObject.name = $"s_{ID}";
     }
     public override void Initialize()
     {
-        data.maxhp = data.curhp = 1024;
-        data.consume = 1.2f;
         sen.RayLength = data.sensor;
-        //sr.color = Random.ColorHSV(0,1,1,1,1,1,1,1);
-        for(int i = 0; i<3; i++)
-            ID += (char)('A'+Random.Range(0, 26));
-        gameObject.name = ID;
     }
 
     public override void OnEpisodeBegin()
     {
-        data.curhp = data.maxhp;
+        data.curhp = data.maxhp*Random.Range(0.9f, 1);
         transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
         transform.up = Random.insideUnitCircle;
     }

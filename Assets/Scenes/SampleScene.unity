@@ -280,9 +280,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &3990434874707602862
+--- !u!1001 &1904926895
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -291,18 +291,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
+      propertyPath: food_amt
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: prey_amt
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
       propertyPath: food_maxcd
-      value: 8
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: food_range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: predator_amt
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3990434873336463060, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
       propertyPath: m_Name
-      value: MapBoarder
+      value: MapBoarder (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3990434873336463061, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3990434873336463061, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}

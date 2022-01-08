@@ -110,12 +110,11 @@ MonoBehaviour:
   selfCopy: {fileID: 7656501115835453428}
   killeff: {fileID: 7198028335267907943, guid: c6dd4b0adb31b2442bf04527e7c3cb69, type: 3}
   data:
-    maxhp: 0
+    maxhp: 2048
     curhp: 0
-    consume: 0
-    sensor: 8
+    consume: 15
+    sensor: 12
     turnRate: -3
-  ID: 
 --- !u!50 &7285269761912614808
 Rigidbody2D:
   serializedVersion: 4
@@ -145,7 +144,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7656501115835453428}
   m_Enabled: 1
-  m_Density: 0.025
+  m_Density: 0.1
   m_Material: {fileID: 6200000, guid: 95994f2326c8d3a4da00cb543292a24d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 4
+  DecisionPeriod: 1
   TakeActionsBetweenDecisions: 1
 --- !u!114 &-7302861546807161217
 MonoBehaviour:

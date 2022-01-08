@@ -1,45 +1,59 @@
 {
-    "EatFood": {
-        "checkpoints": [
-            {
-                "steps": 123558,
-                "file_path": "results\\ppo\\EatFood\\EatFood-123558.onnx",
-                "reward": null,
-                "creation_time": 1641644903.8240268,
-                "auxillary_file_paths": [
-                    "results\\ppo\\EatFood\\EatFood-123558.pt"
-                ]
-            }
-        ],
-        "final_checkpoint": {
-            "steps": 123558,
-            "file_path": "results\\ppo\\EatFood.onnx",
-            "reward": null,
-            "creation_time": 1641644903.8240268,
-            "auxillary_file_paths": [
-                "results\\ppo\\EatFood\\EatFood-123558.pt"
-            ]
-        }
-    },
     "EatPrey": {
         "checkpoints": [
             {
-                "steps": 1537,
-                "file_path": "results\\ppo\\EatPrey\\EatPrey-1537.onnx",
-                "reward": -0.40969998965010745,
-                "creation_time": 1641644903.8750381,
+                "steps": 14774,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-14774.onnx",
+                "reward": 8785.2957453602,
+                "creation_time": 1641657031.4862998,
                 "auxillary_file_paths": [
-                    "results\\ppo\\EatPrey\\EatPrey-1537.pt"
+                    "results\\ppo\\EatPrey\\EatPrey-14774.pt"
+                ]
+            },
+            {
+                "steps": 87271,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-87271.onnx",
+                "reward": 10535.073717828025,
+                "creation_time": 1641657521.8222547,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-87271.pt"
+                ]
+            },
+            {
+                "steps": 220711,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-220711.onnx",
+                "reward": null,
+                "creation_time": 1641661041.831823,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-220711.pt"
+                ]
+            },
+            {
+                "steps": 499942,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-499942.onnx",
+                "reward": null,
+                "creation_time": 1641661735.230689,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-499942.pt"
+                ]
+            },
+            {
+                "steps": 595281,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-595281.onnx",
+                "reward": null,
+                "creation_time": 1641661870.3325324,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-595281.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 1537,
+            "steps": 595281,
             "file_path": "results\\ppo\\EatPrey.onnx",
-            "reward": -0.40969998965010745,
-            "creation_time": 1641644903.8750381,
+            "reward": null,
+            "creation_time": 1641661870.3325324,
             "auxillary_file_paths": [
-                "results\\ppo\\EatPrey\\EatPrey-1537.pt"
+                "results\\ppo\\EatPrey\\EatPrey-595281.pt"
             ]
         }
     },
