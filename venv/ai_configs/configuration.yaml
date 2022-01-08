@@ -29,13 +29,15 @@ behaviors:
           vis_encode_type: simple
           memory: null
           goal_conditioning_type: hyper
-      
+      # gail:
+      #   strength: 0.333
+      #   demo_path: ai_configs/PreyEatDemo.demo
     init_path: null
     keep_checkpoints: 5
     checkpoint_interval: 500000
-    max_steps: 500000
+    max_steps: 1000000
     time_horizon: 64
-    summary_freq: 50000
+    summary_freq: 100000
     threaded: false
     self_play: null
     behavioral_cloning: null
@@ -68,15 +70,13 @@ behaviors:
           vis_encode_type: simple
           memory: null
           goal_conditioning_type: hyper
-      gail:
-        strength: 0.2
-        demo_path: ai_configs/PreyEatDemo.demo
+      
     init_path: null
     keep_checkpoints: 5
     checkpoint_interval: 500000
-    max_steps: 500000
+    max_steps: 1000000
     time_horizon: 64
-    summary_freq: 50000
+    summary_freq: 100000
     threaded: false
     self_play: null
     behavioral_cloning: null

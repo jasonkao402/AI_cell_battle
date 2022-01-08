@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1037138906771174788}
   - component: {fileID: 4531745959531334205}
   - component: {fileID: -6955650866157324857}
-  - component: {fileID: 4542081543442089368}
   m_Layer: 8
   m_Name: prey0
   m_TagString: food_tag
@@ -111,6 +110,7 @@ MonoBehaviour:
     curhp: 0
     consume: 0
     sensor: 12
+    turnRate: -1
   ID: 
 --- !u!50 &-6451632905535474630
 Rigidbody2D:
@@ -128,7 +128,7 @@ Rigidbody2D:
   m_LinearDrag: 1.5
   m_AngularDrag: 20
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95994f2326c8d3a4da00cb543292a24d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -142,7 +142,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2966767148609115222}
   m_Enabled: 1
   m_Density: 0.1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95994f2326c8d3a4da00cb543292a24d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 3
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: EatFood
   TeamId: 0
   m_UseChildSensors: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_SensorName: RayPerceptionSensor
   m_DetectableTags:
   - food_tag
-  m_RaysPerDirection: 6
+  m_RaysPerDirection: 5
   m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.1
   m_RayLength: 5
@@ -228,19 +228,3 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 0, g: 1, b: 0.119916916, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &4542081543442089368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2966767148609115222}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Record: 0
-  NumStepsToRecord: 20000
-  DemonstrationName: PreyEatDemo
-  DemonstrationDirectory: Demos

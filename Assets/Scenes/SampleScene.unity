@@ -252,7 +252,7 @@ Camera:
   far clip plane: 30
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -289,25 +289,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+    - target: {fileID: 3298844386735623717, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
-      propertyPath: food_amt
-      value: 20
+      propertyPath: Record
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+    - target: {fileID: 3298844386735623717, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
-      propertyPath: prey_amt
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: food_maxcd
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: predator_amt
-      value: 6
+      propertyPath: DemonstrationName
+      value: HunterDemo
       objectReference: {fileID: 0}
     - target: {fileID: 3990434873336463060, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}

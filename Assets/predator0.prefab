@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5551214740630482470}
   - component: {fileID: 6635447472345443941}
   - component: {fileID: 5073939400604554320}
+  - component: {fileID: -7302861546807161217}
   m_Layer: 9
   m_Name: predator0
   m_TagString: predator_tag
@@ -104,7 +105,7 @@ Rigidbody2D:
   m_LinearDrag: 1.5
   m_AngularDrag: 20
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95994f2326c8d3a4da00cb543292a24d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -117,8 +118,8 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7656501115835453428}
   m_Enabled: 1
-  m_Density: 0.01
-  m_Material: {fileID: 0}
+  m_Density: 0.015
+  m_Material: {fileID: 6200000, guid: 95994f2326c8d3a4da00cb543292a24d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -157,6 +158,7 @@ MonoBehaviour:
     curhp: 0
     consume: 0
     sensor: 12
+    turnRate: -2
   ID: 
 --- !u!114 &5551214740630482470
 MonoBehaviour:
@@ -227,3 +229,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 4
   TakeActionsBetweenDecisions: 1
+--- !u!114 &-7302861546807161217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7656501115835453428}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 20000
+  DemonstrationName: PreyEatDemo
+  DemonstrationDirectory: Demos

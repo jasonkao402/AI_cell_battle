@@ -5,13 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class geneData
 {
-    public float maxhp, curhp, consume, sensor;
+    public float maxhp, curhp, consume, sensor, turnRate;
     //public int max_killCD, cur_killCD;
 }
 public static class utilFunc
 {
     static Vector3 tmppos;
-    public static float turnRate = -1f;
     public static float spawnRange = 80;
     public static Vector3 RandSq(float rg)
     {
