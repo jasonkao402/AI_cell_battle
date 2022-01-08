@@ -2,22 +2,22 @@
     "EatFood": {
         "checkpoints": [
             {
-                "steps": 23456,
-                "file_path": "results\\ppo\\EatFood\\EatFood-23456.onnx",
-                "reward": null,
-                "creation_time": 1641624372.7173002,
+                "steps": 7623,
+                "file_path": "results\\ppo\\EatFood\\EatFood-7623.onnx",
+                "reward": -117.5665163414269,
+                "creation_time": 1641626723.590807,
                 "auxillary_file_paths": [
-                    "results\\ppo\\EatFood\\EatFood-23456.pt"
+                    "results\\ppo\\EatFood\\EatFood-7623.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 23456,
+            "steps": 7623,
             "file_path": "results\\ppo\\EatFood.onnx",
-            "reward": null,
-            "creation_time": 1641624372.7173002,
+            "reward": -117.5665163414269,
+            "creation_time": 1641626723.590807,
             "auxillary_file_paths": [
-                "results\\ppo\\EatFood\\EatFood-23456.pt"
+                "results\\ppo\\EatFood\\EatFood-7623.pt"
             ]
         }
     },

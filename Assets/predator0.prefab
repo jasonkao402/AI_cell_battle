@@ -12,11 +12,12 @@ GameObject:
   - component: {fileID: 7656501115835453418}
   - component: {fileID: 7285269761912614808}
   - component: {fileID: 593725090024709038}
+  - component: {fileID: 6550745285378002277}
   - component: {fileID: 5551214740630482470}
   - component: {fileID: 6635447472345443941}
   m_Layer: 9
   m_Name: predator0
-  m_TagString: Untagged
+  m_TagString: predator tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +134,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &6550745285378002277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7656501115835453428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cdb736dc6807f4bbfc710d6af5e48e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 5000
+  data:
+    maxhp: 0
+    curhp: 0
+    consume: 0
+    sensor: 10
+  ID: 
 --- !u!114 &5551214740630482470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,13 +202,14 @@ MonoBehaviour:
   m_DetectableTags:
   - wall_tag
   - food_tag
-  m_RaysPerDirection: 12
+  - food_tag
+  m_RaysPerDirection: 16
   m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.1
-  m_RayLength: 5
+  m_RayLength: 8
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 307
   m_ObservationStacks: 1
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}

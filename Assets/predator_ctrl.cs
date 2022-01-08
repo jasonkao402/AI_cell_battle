@@ -103,9 +103,9 @@ public class predator_ctrl : Agent
             if(tmp != null)
             {
                 //eat
-                otherData.curhp = 0;
-                data.curhp += otherData.curhp*0.5f;
-                AddReward(otherData.curhp*0.5f);
+                tmp.data.curhp = 0;
+                data.curhp += tmp.data.curhp*0.5f;
+                AddReward(tmp.data.curhp*0.5f);
             }
         }
     }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -6955650866157324857}
   m_Layer: 8
   m_Name: prey0
-  m_TagString: Untagged
+  m_TagString: food_tag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,13 +209,14 @@ MonoBehaviour:
   m_DetectableTags:
   - wall_tag
   - food_tag
+  - predator_tag
   m_RaysPerDirection: 12
   m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.1
   m_RayLength: 5
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 563
   m_ObservationStacks: 1
   rayHitColor: {r: 0, g: 1, b: 0.119916916, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
