@@ -59,14 +59,14 @@ public class predator_ctrl : Agent
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*actions.ContinuousActions[0], Vector3.forward);
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
-        transform.localScale = Vector3.one * (data.curhp+8000f)/data.maxhp;
+        transform.localScale = Vector3.one * (data.curhp+3000f)/data.maxhp;
         data.curhp -= data.consume * 0.1f;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
             EndEpisode();
         }
-        else if(data.curhp > 8*data.maxhp){
+        else if(data.curhp > 10f*data.maxhp){
             //split
             Instantiate(selfCopy, transform.position, Quaternion.identity, transform.parent);
             AddReward(data.curhp);
@@ -105,8 +105,8 @@ public class predator_ctrl : Agent
         if(tmp != null)
         {
             //eat
-            data.curhp += tmp.data.curhp*0.25f;
-            AddReward(tmp.data.curhp*0.25f);
+            data.curhp += tmp.data.curhp*0.17f;
+            AddReward(tmp.data.curhp*0.17f);
             tmp.data.curhp = 0;
             Instantiate(killeff, transform.position, Quaternion.identity);
         }
