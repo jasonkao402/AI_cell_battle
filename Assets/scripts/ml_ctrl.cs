@@ -32,7 +32,7 @@ public class ml_ctrl : Agent
     public override void Initialize()
     {
         data.maxhp = data.curhp = 1024;
-        data.consume = 1;
+        data.consume = 1.2f;
         sen.RayLength = data.sensor;
         //sr.color = Random.ColorHSV(0,1,1,1,1,1,1,1);
         for(int i = 0; i<3; i++)
@@ -44,6 +44,7 @@ public class ml_ctrl : Agent
     {
         data.curhp = data.maxhp;
         transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
+        transform.up = Random.insideUnitCircle;
     }
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -110,13 +111,15 @@ public class ml_ctrl : Agent
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
+        float tmpf;
         tmp = other.gameObject.GetComponent<ml_ctrl>();
         if(tmp != null)
         {
             //share food
             otherData = tmp.data;
-            data.curhp = (data.curhp+otherData.curhp)*0.5f;
-            AddReward((data.curhp+otherData.curhp)*0.1f);
+            tmpf = data.curhp+otherData.curhp;
+            data.curhp = tmpf * 0.5f;
+            AddReward(tmpf*0.1f);
         }
     }
 }

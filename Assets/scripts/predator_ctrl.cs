@@ -9,7 +9,7 @@ public class predator_ctrl : Agent
 {
     // Start is called before the first frame update
     const int deg = 15;
-    public GameObject selfCopy;
+    public GameObject selfCopy, killeff;
     ml_ctrl tmp;
     geneData otherData;
     public geneData data = new geneData();
@@ -18,20 +18,21 @@ public class predator_ctrl : Agent
     Collider2D tcol;
     //RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
     Vector3 t;
-    RayPerceptionSensorComponentBase sen;
+    RayPerceptionSensorComponentBase[] sen = new RayPerceptionSensorComponentBase[2];
     [SerializeField]
     //float[] vision = new float[NumRay];
     string ID;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        sen = GetComponent<RayPerceptionSensorComponentBase>();
+        sen = GetComponents<RayPerceptionSensorComponentBase>();
     }
     public override void Initialize()
     {
         data.maxhp = data.curhp = 2048;
-        data.consume = 2f;
-        sen.RayLength = data.sensor;
+        data.consume = 5f;
+        sen[0].RayLength = data.sensor;
+        sen[1].RayLength = data.sensor;
         //sr.color = Random.ColorHSV(0,1,1,1,1,1,1,1);
         for(int i = 0; i<3; i++)
             ID += (char)('A'+Random.Range(0, 26));
@@ -42,6 +43,7 @@ public class predator_ctrl : Agent
     {
         data.curhp = data.maxhp;
         transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
+        transform.up = Random.insideUnitCircle;
     }
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -58,7 +60,7 @@ public class predator_ctrl : Agent
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
         transform.localScale = Vector3.one * (data.curhp+8000f)/data.maxhp;
-        data.curhp -= data.consume * 0.25f;
+        data.curhp -= data.consume * 0.1f;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
@@ -74,11 +76,14 @@ public class predator_ctrl : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> cActions = actionsOut.ContinuousActions;
-        tcol = Physics2D.OverlapCircle(transform.position, data.sensor*transform.localScale.x, 1<<8);
+        tcol = ClosestCollider(
+            transform.position, 
+            Physics2D.OverlapCircleAll(transform.position, data.sensor*transform.localScale.x, 1<<8)
+            );
         if(!tcol)
         {
             cActions[0] = 0;
-            cActions[1] = 0.5f;
+            cActions[1] = 0.333f;
         }
         else
         {
@@ -100,9 +105,26 @@ public class predator_ctrl : Agent
         if(tmp != null)
         {
             //eat
+            data.curhp += tmp.data.curhp*0.25f;
+            AddReward(tmp.data.curhp*0.25f);
             tmp.data.curhp = 0;
-            data.curhp += tmp.data.curhp*0.2f;
-            AddReward(tmp.data.curhp*0.2f);
+            Instantiate(killeff, transform.position, Quaternion.identity);
         }
     }
+    Collider2D ClosestCollider(Vector3 unitPosition, Collider2D[] tgtColliders)
+    {
+        float bestdstc = 999999.0f, tmpdstc;
+        Collider2D bestCollider = null;
+
+        foreach (Collider2D tgt in tgtColliders)
+        {
+            tmpdstc = Vector3.SqrMagnitude(unitPosition - tgt.transform.position);
+            if (tmpdstc < bestdstc)
+            {
+                bestdstc = tmpdstc;
+                bestCollider = tgt;
+            }
+        }
+        return bestCollider;
+    } 
 }

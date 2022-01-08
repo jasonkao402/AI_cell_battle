@@ -14,11 +14,15 @@ public class FollowCam : MonoBehaviour
     }
     private void Update() {
         Camera.main.orthographicSize -= Input.GetAxisRaw("Mouse ScrollWheel");
-        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, 10);
+        Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize, 1, 20);
         if(Input.GetMouseButtonDown(0))
         {
             col = Physics2D.OverlapCircle(Camera.main.ScreenToWorldPoint(Input.mousePosition), 1, 1|1<<8|1<<9|1<<10);
             if(col != null) tgt = col.gameObject;
+        }
+        else if(Input.GetMouseButtonDown(1))
+        {
+            tgt = FindObjectOfType<predator_ctrl>().gameObject;
         }
         else if(Input.GetKeyDown(KeyCode.LeftShift))
         {
