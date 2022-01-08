@@ -289,38 +289,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: prey
-      value: 
-      objectReference: {fileID: 2966767148609115222, guid: f7f8563c437bf8b4693805099d9d89e6,
-        type: 3}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: food_amt
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: predator
-      value: 
-      objectReference: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
-        type: 3}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: prey_amt
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: food_maxcd
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
-        type: 3}
-      propertyPath: predator_amt
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 3990434873336463060, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
       propertyPath: m_Name

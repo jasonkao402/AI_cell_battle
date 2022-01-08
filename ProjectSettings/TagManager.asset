@@ -6,6 +6,7 @@ TagManager:
   tags:
   - wall_tag
   - food_tag
+  - predator_tag
   - predator tag
   layers:
   - Default
@@ -18,7 +19,7 @@ TagManager:
   - 
   - prey_group
   - predator_group
-  - 
+  - food_group
   - 
   - 
   - 

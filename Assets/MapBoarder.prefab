@@ -49,13 +49,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   food: {fileID: 5468076885301964017, guid: 65f9f336d9f791c4bbec0c248320caf8, type: 3}
-  prey: {fileID: 0}
-  predator: {fileID: 0}
-  food_maxcd: 15
-  food_range: 80
+  prey: {fileID: 2966767148609115222, guid: f7f8563c437bf8b4693805099d9d89e6, type: 3}
+  predator: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
+    type: 3}
+  food_maxcd: 12
+  food_range: 70
   food_amt: 10
-  prey_amt: 0
-  predator_amt: 0
+  prey_amt: 50
+  predator_amt: 6
 --- !u!1 &3990434874477348252
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +68,7 @@ GameObject:
   - component: {fileID: 3990434874477348253}
   - component: {fileID: 3990434874477348250}
   - component: {fileID: 3990434874477348251}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: New Sprite
   m_TagString: wall_tag
   m_Icon: {fileID: 0}
@@ -163,7 +164,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &3990434874613356570
 GameObject:
@@ -176,7 +177,7 @@ GameObject:
   - component: {fileID: 3990434874613356571}
   - component: {fileID: 3990434874613356568}
   - component: {fileID: 3990434874613356569}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: New Sprite (3)
   m_TagString: wall_tag
   m_Icon: {fileID: 0}
@@ -272,7 +273,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &3990434874710179920
 GameObject:
@@ -285,7 +286,7 @@ GameObject:
   - component: {fileID: 3990434874710179921}
   - component: {fileID: 3990434874710180782}
   - component: {fileID: 3990434874710180783}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: New Sprite (1)
   m_TagString: wall_tag
   m_Icon: {fileID: 0}
@@ -381,7 +382,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &3990434874903287311
 GameObject:
@@ -476,7 +477,7 @@ GameObject:
   - component: {fileID: 3990434875138057527}
   - component: {fileID: 3990434875138057524}
   - component: {fileID: 3990434875138057525}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: New Sprite (2)
   m_TagString: wall_tag
   m_Icon: {fileID: 0}
@@ -572,5 +573,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0

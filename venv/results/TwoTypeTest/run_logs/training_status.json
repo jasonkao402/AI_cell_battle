@@ -1,0 +1,51 @@
+{
+    "EatPrey": {
+        "checkpoints": [
+            {
+                "steps": 18966,
+                "file_path": "results\\TwoTypeTest\\EatPrey\\EatPrey-18966.onnx",
+                "reward": 52.444469725920094,
+                "creation_time": 1641631683.1146655,
+                "auxillary_file_paths": [
+                    "results\\TwoTypeTest\\EatPrey\\EatPrey-18966.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 18966,
+            "file_path": "results\\TwoTypeTest\\EatPrey.onnx",
+            "reward": 52.444469725920094,
+            "creation_time": 1641631683.1146655,
+            "auxillary_file_paths": [
+                "results\\TwoTypeTest\\EatPrey\\EatPrey-18966.pt"
+            ]
+        }
+    },
+    "EatFood": {
+        "checkpoints": [
+            {
+                "steps": 105354,
+                "file_path": "results\\TwoTypeTest\\EatFood\\EatFood-105354.onnx",
+                "reward": null,
+                "creation_time": 1641631683.1756792,
+                "auxillary_file_paths": [
+                    "results\\TwoTypeTest\\EatFood\\EatFood-105354.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 105354,
+            "file_path": "results\\TwoTypeTest\\EatFood.onnx",
+            "reward": null,
+            "creation_time": 1641631683.1756792,
+            "auxillary_file_paths": [
+                "results\\TwoTypeTest\\EatFood\\EatFood-105354.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

@@ -2,22 +2,44 @@
     "EatFood": {
         "checkpoints": [
             {
-                "steps": 7623,
-                "file_path": "results\\ppo\\EatFood\\EatFood-7623.onnx",
-                "reward": -117.5665163414269,
-                "creation_time": 1641626723.590807,
+                "steps": 29100,
+                "file_path": "results\\ppo\\EatFood\\EatFood-29100.onnx",
+                "reward": 268.715182398172,
+                "creation_time": 1641627793.3100905,
                 "auxillary_file_paths": [
-                    "results\\ppo\\EatFood\\EatFood-7623.pt"
+                    "results\\ppo\\EatFood\\EatFood-29100.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 7623,
+            "steps": 29100,
             "file_path": "results\\ppo\\EatFood.onnx",
-            "reward": -117.5665163414269,
-            "creation_time": 1641626723.590807,
+            "reward": 268.715182398172,
+            "creation_time": 1641627793.3100905,
             "auxillary_file_paths": [
-                "results\\ppo\\EatFood\\EatFood-7623.pt"
+                "results\\ppo\\EatFood\\EatFood-29100.pt"
+            ]
+        }
+    },
+    "EatPrey": {
+        "checkpoints": [
+            {
+                "steps": 46920,
+                "file_path": "results\\ppo\\EatPrey\\EatPrey-46920.onnx",
+                "reward": 0.46667301952838897,
+                "creation_time": 1641627793.3723762,
+                "auxillary_file_paths": [
+                    "results\\ppo\\EatPrey\\EatPrey-46920.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 46920,
+            "file_path": "results\\ppo\\EatPrey.onnx",
+            "reward": 0.46667301952838897,
+            "creation_time": 1641627793.3723762,
+            "auxillary_file_paths": [
+                "results\\ppo\\EatPrey\\EatPrey-46920.pt"
             ]
         }
     },

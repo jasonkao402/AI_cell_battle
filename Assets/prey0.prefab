@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2966767148609115208}
   - component: {fileID: -1594125761350923649}
   - component: {fileID: -6451632905535474630}
-  - component: {fileID: 6097649657566930313}
+  - component: {fileID: 8218318560916618158}
   - component: {fileID: 1037138906771174788}
   - component: {fileID: 4531745959531334205}
   - component: {fileID: -6955650866157324857}
@@ -77,9 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 8675535076d9e7144aef9f7db577a963,
-    type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 46ab48f42f6c184448f8ce7b53a7b5ea, type: 3}
+  m_Color: {r: 1, g: 0.9817881, b: 0.84339625, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -124,8 +123,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.019634955
-  m_LinearDrag: 0.5
+  m_Mass: 0.25
+  m_LinearDrag: 1.5
   m_AngularDrag: 20
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -133,22 +132,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6097649657566930313
-CircleCollider2D:
+--- !u!61 &8218318560916618158
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2966767148609115222}
   m_Enabled: 1
-  m_Density: 0.4
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.125
+  m_Size: {x: 0.5, y: 0.5}
+  m_EdgeRadius: 0
 --- !u!114 &1037138906771174788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 4
+    VectorObservationSize: 6
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -210,13 +219,13 @@ MonoBehaviour:
   - wall_tag
   - food_tag
   - predator_tag
-  m_RaysPerDirection: 12
-  m_MaxRayDegrees: 180
+  m_RaysPerDirection: 5
+  m_MaxRayDegrees: 90
   m_SphereCastRadius: 0.1
   m_RayLength: 5
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 563
+    m_Bits: 1587
   m_ObservationStacks: 1
   rayHitColor: {r: 0, g: 1, b: 0.119916916, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}

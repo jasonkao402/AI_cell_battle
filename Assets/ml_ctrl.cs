@@ -8,6 +8,7 @@ using Unity.MLAgents.Sensors;
 public class ml_ctrl : Agent
 {
     // Start is called before the first frame update
+    public static int population;
     const int NumRay = 24, deg = 15; 
     public GameObject selfCopy;
     ml_ctrl tmp;
@@ -23,6 +24,7 @@ public class ml_ctrl : Agent
     //float[] vision = new float[NumRay];
     string ID;
     private void Awake() {
+        population = 0;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         sen = GetComponent<RayPerceptionSensorComponentBase>();
@@ -46,14 +48,18 @@ public class ml_ctrl : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(rb.velocity);
         sensor.AddObservation(transform.localScale.x);
     }
     public override void OnActionReceived(ActionBuffers actions)
     {
         //rb.AddTorque(data.turn * actions.ContinuousActions[0]);
-        rb.AddForce(data.consume * new Vector2(actions.ContinuousActions[0], actions.ContinuousActions[1]) );
-        transform.localScale = Vector3.one * (data.curhp+400f) * 0.004f;
-        data.curhp -= data.consume * 0.25f;
+        //rb.AddForce(data.consume * new Vector2(actions.ContinuousActions[0], actions.ContinuousActions[1]) );
+        transform.rotation *= Quaternion.AngleAxis(utilFunc.turnRate*actions.ContinuousActions[0], Vector3.forward);
+        rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
+
+        transform.localScale = Vector3.one * (data.curhp+1000f)/data.maxhp;
+        data.curhp -= data.consume * 0.1f;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
@@ -62,6 +68,7 @@ public class ml_ctrl : Agent
         else if(data.curhp > 3*data.maxhp){
             //split
             Instantiate(selfCopy, transform.position, Quaternion.identity, transform.parent);
+            population++;
             AddReward(data.curhp);
             data.curhp = data.maxhp;
         }
@@ -74,17 +81,15 @@ public class ml_ctrl : Agent
     }
     private void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log(other.gameObject.name);
-        data.curhp += other.transform.localScale.x * 100f;
-        AddReward(other.transform.localScale.x * 10f);
+        data.curhp += other.transform.localScale.x * 150f;
+        AddReward(10);
         Destroy(other.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("wall_tag"))
         {
-            transform.localPosition = new Vector3(-transform.localPosition.x, -transform.localPosition.y, 0);
-            AddReward(-1);
-            //SetReward(0);
-            //EndEpisode();
+            transform.localPosition = utilFunc.RandSq(60);
+            AddReward(-10);
         }
         else
         {
@@ -94,7 +99,7 @@ public class ml_ctrl : Agent
                 //share food
                 otherData = tmp.data;
                 data.curhp = (data.curhp+otherData.curhp)*0.5f;
-                AddReward((data.curhp+otherData.curhp)*0.2f);
+                AddReward((data.curhp+otherData.curhp)*0.1f);
             }
         }
     }

@@ -12,6 +12,7 @@ public class foodSpawn : MonoBehaviour
     private void Start() {
         for(int i = 0; i<prey_amt; i++)
         {
+            ml_ctrl.population++;
             Instantiate(prey, transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
         }
         for(int i = 0; i<predator_amt; i++)

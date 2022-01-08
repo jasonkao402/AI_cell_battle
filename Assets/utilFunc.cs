@@ -11,6 +11,7 @@ public class geneData
 public static class utilFunc
 {
     static Vector3 tmppos;
+    public static float turnRate = -2f;
     public static float spawnRange = 80;
     public static Vector3 RandSq(float rg)
     {

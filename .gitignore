@@ -44,3 +44,5 @@ venv/Scripts/__pycache__/pywin32_postinstall.cpython-39.pyc
 venv/pyvenv.cfg
 *.log
 venv/results/ppo/*
+*.onnx
+*.pt
