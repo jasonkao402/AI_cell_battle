@@ -1,6 +1,6 @@
 default_settings: null
 behaviors:
-  EatFood:
+  EatPrey:
     trainer_type: ppo
     hyperparameters:
       batch_size: 1024
@@ -29,6 +29,21 @@ behaviors:
           vis_encode_type: simple
           memory: null
           goal_conditioning_type: hyper
+      gail:
+        gamma: 0.99
+        strength: 0.2
+        network_settings:
+          normalize: false
+          hidden_units: 128
+          num_layers: 2
+          vis_encode_type: simple
+          memory: null
+          goal_conditioning_type: hyper
+        learning_rate: 0.0003
+        encoding_size: null
+        use_actions: false
+        use_vail: false
+        demo_path: ai_configs/PreyEatDemo.demo
     init_path: null
     keep_checkpoints: 5
     checkpoint_interval: 500000
@@ -38,7 +53,7 @@ behaviors:
     threaded: false
     self_play: null
     behavioral_cloning: null
-  EatPrey:
+  EatFood:
     trainer_type: ppo
     hyperparameters:
       batch_size: 1024
@@ -86,7 +101,7 @@ engine_settings:
   width: 84
   height: 84
   quality_level: 5
-  time_scale: 20
+  time_scale: 20.0
   target_frame_rate: -1
   capture_frame_rate: 60
   no_graphics: false
@@ -95,8 +110,8 @@ checkpoint_settings:
   run_id: TwoTypeTest
   initialize_from: null
   load_model: false
-  resume: false
-  force: true
+  resume: true
+  force: false
   train_model: false
   inference: false
   results_dir: results

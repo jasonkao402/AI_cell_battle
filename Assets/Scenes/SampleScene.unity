@@ -289,6 +289,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: food_amt
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: prey_amt
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: food_maxcd
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3990434873336463058, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
+        type: 3}
+      propertyPath: predator_amt
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3990434873336463060, guid: 516b0dd6c3300d448ad8cfa860a4b1b6,
         type: 3}
       propertyPath: m_Name

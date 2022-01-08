@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1037138906771174788}
   - component: {fileID: 4531745959531334205}
   - component: {fileID: -6955650866157324857}
+  - component: {fileID: 4542081543442089368}
   m_Layer: 8
   m_Name: prey0
   m_TagString: food_tag
@@ -103,13 +104,13 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 5000
+  MaxStep: 10000
   selfCopy: {fileID: 2966767148609115222}
   data:
     maxhp: 0
     curhp: 0
     consume: 0
-    sensor: 4
+    sensor: 12
   ID: 
 --- !u!50 &-6451632905535474630
 Rigidbody2D:
@@ -123,7 +124,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.25
+  m_Mass: 0.025
   m_LinearDrag: 1.5
   m_AngularDrag: 20
   m_GravityScale: 0
@@ -140,7 +141,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2966767148609115222}
   m_Enabled: 1
-  m_Density: 0.5
+  m_Density: 0.1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -200,7 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 8
+  DecisionPeriod: 4
   TakeActionsBetweenDecisions: 1
 --- !u!114 &-6955650866157324857
 MonoBehaviour:
@@ -216,11 +217,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SensorName: RayPerceptionSensor
   m_DetectableTags:
-  - wall_tag
   - food_tag
-  - predator_tag
-  m_RaysPerDirection: 5
-  m_MaxRayDegrees: 90
+  m_RaysPerDirection: 6
+  m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.1
   m_RayLength: 5
   m_RayLayerMask:
@@ -229,3 +228,19 @@ MonoBehaviour:
   m_ObservationStacks: 1
   rayHitColor: {r: 0, g: 1, b: 0.119916916, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &4542081543442089368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966767148609115222}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2902496c0120472b90269f94a0aec7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Record: 0
+  NumStepsToRecord: 20000
+  DemonstrationName: PreyEatDemo
+  DemonstrationDirectory: Demos

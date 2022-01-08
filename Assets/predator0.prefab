@@ -117,7 +117,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7656501115835453428}
   m_Enabled: 1
-  m_Density: 0.1
+  m_Density: 0.01
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
@@ -150,12 +150,13 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 5000
+  MaxStep: 10000
+  selfCopy: {fileID: 7656501115835453428}
   data:
     maxhp: 0
     curhp: 0
     consume: 0
-    sensor: 10
+    sensor: 12
   ID: 
 --- !u!114 &5551214740630482470
 MonoBehaviour:
@@ -201,10 +202,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SensorName: RayPerceptionSensor
   m_DetectableTags:
-  - wall_tag
   - food_tag
   m_RaysPerDirection: 8
-  m_MaxRayDegrees: 90
+  m_MaxRayDegrees: 180
   m_SphereCastRadius: 0.1
   m_RayLength: 8
   m_RayLayerMask:
@@ -225,5 +225,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 5
+  DecisionPeriod: 4
   TakeActionsBetweenDecisions: 1

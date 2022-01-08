@@ -9,6 +9,7 @@ public class predator_ctrl : Agent
 {
     // Start is called before the first frame update
     const int deg = 15;
+    public GameObject selfCopy;
     ml_ctrl tmp;
     geneData otherData;
     public geneData data = new geneData();
@@ -46,7 +47,7 @@ public class predator_ctrl : Agent
     {
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.localRotation);
-        sensor.AddObservation(rb.velocity);
+        sensor.AddObservation(rb.velocity.normalized);
         sensor.AddObservation(transform.localScale.x);
     }
     public override void OnActionReceived(ActionBuffers actions)
@@ -63,8 +64,9 @@ public class predator_ctrl : Agent
             //starve
             EndEpisode();
         }
-        else if(data.curhp > 5*data.maxhp){
+        else if(data.curhp > 8*data.maxhp){
             //split
+            Instantiate(selfCopy, transform.position, Quaternion.identity, transform.parent);
             AddReward(data.curhp);
             data.curhp = data.maxhp;
         }
@@ -72,15 +74,25 @@ public class predator_ctrl : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> cActions = actionsOut.ContinuousActions;
-        cActions[0] = Input.GetAxisRaw("Horizontal");
-        cActions[1] = Input.GetAxisRaw("Vertical");
+        tcol = Physics2D.OverlapCircle(transform.position, data.sensor*transform.localScale.x, 1<<8);
+        if(!tcol)
+        {
+            cActions[0] = 0;
+            cActions[1] = 0.25f;
+        }
+        else
+        {
+            cActions[0] = Vector3.Cross(tcol.transform.position-transform.position, transform.up).normalized.z;
+            cActions[1] = 1;
+        }
+        //cActions[1] = Input.GetAxisRaw("Vertical");
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        //Debug.Log(other.gameObject.name);
-        data.curhp += other.transform.localScale.x * 20f;
-        AddReward(other.transform.localScale.x * 10f);
-        Destroy(other.gameObject);
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     //Debug.Log(other.gameObject.name);
+    //     data.curhp += other.transform.localScale.x * 20f;
+    //     AddReward(other.transform.localScale.x * 10f);
+    //     Destroy(other.gameObject);
+    // }
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.gameObject.CompareTag("wall_tag"))
         {

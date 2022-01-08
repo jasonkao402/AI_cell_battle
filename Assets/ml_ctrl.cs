@@ -9,14 +9,14 @@ public class ml_ctrl : Agent
 {
     // Start is called before the first frame update
     public static int population;
-    const int NumRay = 24, deg = 15; 
+    const int deg = 15; 
     public GameObject selfCopy;
     ml_ctrl tmp;
     geneData otherData;
     public geneData data = new geneData();
     Rigidbody2D rb;
     SpriteRenderer sr;
-    Collider2D tcol;
+    Collider2D tcol, esccol;
     //RaycastHit2D[] ray2D = new RaycastHit2D[NumRay];
     Vector3 t;
     RayPerceptionSensorComponentBase sen;
@@ -49,7 +49,7 @@ public class ml_ctrl : Agent
     {
         sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(transform.localRotation);
-        sensor.AddObservation(rb.velocity);
+        sensor.AddObservation(rb.velocity.normalized);
         sensor.AddObservation(transform.localScale.x);
     }
     public override void OnActionReceived(ActionBuffers actions)
@@ -77,8 +77,22 @@ public class ml_ctrl : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> cActions = actionsOut.ContinuousActions;
-        cActions[0] = Input.GetAxisRaw("Horizontal");
-        cActions[1] = Input.GetAxisRaw("Vertical");
+        float turn = 0;
+        tcol = Physics2D.OverlapCircle(transform.position, data.sensor*transform.localScale.x, 1<<10);
+        esccol = Physics2D.OverlapCircle(transform.position, data.sensor*transform.localScale.x, 1<<9);
+        if(tcol){
+            turn += Vector3.Cross(tcol.transform.position-transform.position, transform.up).normalized.z;
+            cActions[1] = 0.75f;
+        }
+        else if(esccol){
+            turn -= Vector3.Cross(esccol.transform.position-transform.position, transform.up).normalized.z;
+            cActions[1] = 1;
+        }
+        else
+        {
+            cActions[1] = 0.25f;
+        }
+        cActions[0] = turn;
     }
     private void OnTriggerEnter2D(Collider2D other) {
         //Debug.Log(other.gameObject.name);
