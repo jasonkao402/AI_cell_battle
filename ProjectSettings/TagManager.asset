@@ -7,7 +7,7 @@ TagManager:
   - wall_tag
   - food_tag
   - predator_tag
-  - predator tag
+  - prey_tag
   layers:
   - Default
   - TransparentFX

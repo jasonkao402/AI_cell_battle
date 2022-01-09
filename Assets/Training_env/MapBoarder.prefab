@@ -52,11 +52,13 @@ MonoBehaviour:
   prey: {fileID: 5438523987746257937, guid: 3a854a715fe519146a2f306816e2f883, type: 3}
   predator: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
     type: 3}
-  food_maxcd: 8
+  food_maxcd: 12
   food_range: 70
-  food_amt: 14
-  prey_amt: 80
-  predator_amt: 3
+  food_init: 8
+  prey_init: 60
+  predator_init: 12
+  prey_pop: 0
+  predator_pop: 0
 --- !u!1 &3990434874477348252
 GameObject:
   m_ObjectHideFlags: 0

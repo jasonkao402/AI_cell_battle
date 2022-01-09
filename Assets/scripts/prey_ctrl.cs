@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class prey_ctrl : MonoBehaviour
 {
-    public static int population;
-    public GameObject selfCopy;
+    objPool pooli;
+    envMaid emaid;
     prey_ctrl tmp;
     geneData otherData;
     public geneData data = new geneData();
@@ -16,19 +16,31 @@ public class prey_ctrl : MonoBehaviour
     int scan;
     string ID;
     private void Awake() {
-        population = 0;
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         for(int i = 0; i<2; i++)
             ID += (char)('A'+Random.Range(0, 26));
         gameObject.name = $"s_{ID}";
     }
-
-    void OnRespawn()
-    {
+    private void Start() {
+        emaid = GetComponentInParent<envMaid>();
+        pooli = objPool.Instance;
+    }
+    private void OnEnable() {
+        if(!emaid) emaid = GetComponentInParent<envMaid>();
         data.curhp = data.maxhp*Random.Range(0.9f, 1);
         transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
         transform.up = Random.insideUnitCircle;
+    }
+    void tryDead()
+    {
+        if(emaid.prey_pop > emaid.prey_init){
+            emaid.prey_pop--;
+            gameObject.SetActive(false);
+        }
+        else{
+            OnEnable();
+        }
     }
     void tryscan()
     {
@@ -42,13 +54,13 @@ public class prey_ctrl : MonoBehaviour
     private void FixedUpdate() {
         float turn = 0, fwrd = 0;
         tryscan();
-        if(tcol){
-            turn += Vector3.Cross(tcol.transform.position-transform.position, transform.up).normalized.z;
-            fwrd = 0.75f;
-        }
-        else if(esccol){
+        if(esccol){
             turn -= Vector3.Cross(esccol.transform.position-transform.position, transform.up).normalized.z;
             fwrd = 1;
+        }
+        else if(tcol){
+            turn += Vector3.Cross(tcol.transform.position-transform.position, transform.up).normalized.z;
+            fwrd = 0.75f;
         }
         else{
             fwrd = 0.5f;
@@ -57,16 +69,17 @@ public class prey_ctrl : MonoBehaviour
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*turn, Vector3.forward);
         rb.AddForce(data.consume * fwrd * transform.up);
 
-        transform.localScale = Vector3.one * (data.curhp+2000f)/data.maxhp;
+        transform.localScale = Vector3.one * (data.curhp+1600f)/data.maxhp;
         data.curhp -= data.consume * 0.1f;
         if(data.curhp < 0){
-            OnRespawn();
+            tryDead();
         }
         else if(data.curhp > 3*data.maxhp){
-            //split
-            Instantiate(selfCopy, transform.position, Quaternion.identity, transform.parent);
-            population++;
+            //spawn baby
+            //Instantiate(selfCopy, transform.position, Quaternion.identity, transform.parent);
             data.curhp = data.maxhp;
+            emaid.prey_pop++;
+            pooli.TakePool("prey", transform.position, Quaternion.identity, transform.parent);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -78,8 +91,9 @@ public class prey_ctrl : MonoBehaviour
         }
         else if(other.gameObject.CompareTag("food_tag"))
         {
-            data.curhp += other.transform.localScale.x * 150f;
-            Destroy(other.gameObject);
+            data.curhp += emaid.foodValue;
+            other.gameObject.SetActive(false);
+            emaid.food_pop--;
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {

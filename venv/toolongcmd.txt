@@ -1,0 +1,1 @@
+mlagents-learn ai_configs\configuration.yaml --env=build\AI_cell_battle --num-envs=6 --run-id=TrainSet4 --resume
