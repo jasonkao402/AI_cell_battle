@@ -38,7 +38,8 @@ public class predator_ctrl : Agent
             gameObject.SetActive(false);
         }
         else{
-            OnEpisodeBegin();
+            EndEpisode();
+            //OnEpisodeBegin();
         }
     }
     public override void Initialize()
@@ -70,7 +71,7 @@ public class predator_ctrl : Agent
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
         transform.localScale = Vector3.one * (data.curhp+2048f)/data.maxhp;
-        data.curhp -= data.consume * 0.03f;
+        data.curhp -= data.consume * 0.1f;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
@@ -119,12 +120,12 @@ public class predator_ctrl : Agent
             data.curhp += tmp_p.data.curhp*0.2f;
             AddReward(1);
             tmp_p.data.curhp = 0;
-            pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
+            
+            stats.Add("wolf_population", emaid.predator_pop);
+            stats.Add("prey_population", emaid.prey_pop);
+            stats.Add("food_population", emaid.food_pop);
+            //pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
         }
-        
-        stats.Add("wolf_population", emaid.predator_pop);
-        stats.Add("prey_population", emaid.prey_pop);
-        stats.Add("food_population", emaid.food_pop);
     }
     Collider2D ClosestCollider(Vector3 unitPosition, Collider2D[] tgtColliders)
     {

@@ -570,12 +570,12 @@ MonoBehaviour:
   prey: {fileID: 5438523987746257937, guid: 3a854a715fe519146a2f306816e2f883, type: 3}
   predator: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
     type: 3}
-  food_maxcd: 10
+  food_maxcd: 11
   food_range: 70
-  foodValue: 1600
-  food_init: 22
-  prey_init: 15
-  predator_init: 1
+  foodValue: 3600
+  food_init: 16
+  prey_init: 40
+  predator_init: 5
   food_pop: 0
   prey_pop: 0
   predator_pop: 0
