@@ -145,9 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    maxhp: 650
+    maxhp: 1600
     curhp: 0
-    consume: 1.2
+    consume: 1.1
     sensor: 7.5
-    turnRate: -1.2
+    turnRate: -1.1
   scanCD: 33

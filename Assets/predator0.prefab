@@ -105,7 +105,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 7500
+  MaxStep: 8000
   data:
     maxhp: 2048
     curhp: 0
@@ -141,7 +141,7 @@ BoxCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7656501115835453428}
   m_Enabled: 1
-  m_Density: 0.09
+  m_Density: 0.055
   m_Material: {fileID: 6200000, guid: 95994f2326c8d3a4da00cb543292a24d, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0

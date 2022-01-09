@@ -71,16 +71,16 @@ public class predator_ctrl : Agent
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
         transform.localScale = Vector3.one * (data.curhp+2048f)/data.maxhp;
-        data.curhp -= data.consume * 0.1f;
+        data.curhp -= data.consume * 0.333f;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
-            AddReward(-10);
+            AddReward(-15);
             tryDead();
         }
-        else if(data.curhp > 8f*data.maxhp){
+        else if(data.curhp > 5f*data.maxhp){
             //spawn baby
-            AddReward(10);
+            AddReward(15);
             data.curhp = data.maxhp;
             emaid.predator_pop++;
             pooli.TakePool("wolf", transform.position, Quaternion.identity, transform.parent);
@@ -109,7 +109,7 @@ public class predator_ctrl : Agent
         if(other.gameObject.CompareTag("wall_tag"))
         {
             transform.localPosition = utilFunc.RandSq(60);
-            AddReward(-0.02f);
+            AddReward(-0.03f);
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {
@@ -117,13 +117,12 @@ public class predator_ctrl : Agent
         if(tmp_p != null)
         {
             //eat
-            data.curhp += tmp_p.data.curhp*0.2f;
+            data.curhp += tmp_p.data.curhp*0.3f;
             AddReward(1);
             tmp_p.data.curhp = 0;
             
             stats.Add("wolf_population", emaid.predator_pop);
             stats.Add("prey_population", emaid.prey_pop);
-            stats.Add("food_population", emaid.food_pop);
             //pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
         }
     }

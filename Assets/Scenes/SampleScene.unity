@@ -202,7 +202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -294,6 +294,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapBoarder_EZ1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051594, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7904023456802051595, guid: 155502f45c0be984fab6e77601135810,
         type: 3}
       propertyPath: m_RootOrder
@@ -384,7 +389,7 @@ MonoBehaviour:
   - ID: prey
     blueprint: {fileID: 5438523987746257937, guid: 3a854a715fe519146a2f306816e2f883,
       type: 3}
-    amt: 400
+    amt: 500
   - ID: wolf
     blueprint: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
       type: 3}
@@ -422,6 +427,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapBoarder_EZ1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051594, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7904023456802051595, guid: 155502f45c0be984fab6e77601135810,
         type: 3}
@@ -546,6 +556,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051596, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: foodValue
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051596, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: food_init
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051596, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: prey_init
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051596, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: food_maxcd
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155502f45c0be984fab6e77601135810, type: 3}
