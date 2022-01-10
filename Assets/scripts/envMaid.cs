@@ -8,12 +8,33 @@ public class envMaid : MonoBehaviour
     public GameObject food, prey, predator;
     StreamWriter psr, wsr;
     objPool pooli;
-    public float food_maxcd, food_range, foodValue;
-    public int food_init, prey_init, predator_init;
-    public int prey_pop, predator_pop, scan_max;
+
+    [Header("season & food")]
+    public int food_amt;
+    public float food_maxcd;
+    public float food_range;
+    public float foodBase;
+    public float foodValue;
+    public float season_intv;
+    
+    //[Space(20)]
+
+    [Header("Animal Limits")]
+    public int predator_init;
+    public int prey_init;
+
+    [Header("population")]
+    public int predator_pop;
+    public int prey_pop;
+    //[Space(20)]
+
+    [Header("record result")]
     public bool isRecord;
+    public int scan_max;
+    //[Space(20)]
+
     int scan_cur;
-    float food_curcd;
+    float food_curcd, season_now;
     // Update is called once per frame
     private void Start() {
         pooli = objPool.Instance;
@@ -25,8 +46,8 @@ public class envMaid : MonoBehaviour
             string ID = "";
             for(int i = 0; i<3; i++)
                 ID += (char)('A'+Random.Range(0, 26));
-            psr = File.CreateText($"output_p_{ID}.txt");
-            wsr = File.CreateText($"output_w_{ID}.txt");
+            psr = File.CreateText($"venv/output_p_{ID}.txt");
+            wsr = File.CreateText($"venv/output_w_{ID}.txt");
         }
         for(int i = 0; i<prey_init; i++)
         {
@@ -42,7 +63,9 @@ public class envMaid : MonoBehaviour
         if(food_curcd < 0)
         {
             food_curcd = food_maxcd;
-            for(int i = 0; i < food_init; i++)
+            season_now += 1f/season_intv;
+            foodValue = (Mathf.Sin(season_now)*0.1666f+1f)*foodBase;
+            for(int i = 0; i < food_amt; i++)
             {
                 pooli.TakePool("food", transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
             }

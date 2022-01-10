@@ -100,7 +100,7 @@ MonoBehaviour:
   data:
     maxhp: 3300
     curhp: 0
-    consume: 1.35
+    consume: 1.4
     sensor: 7.5
     turnRate: -1.4
   scanCD: 50

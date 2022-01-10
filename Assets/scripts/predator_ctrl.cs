@@ -62,7 +62,7 @@ public class predator_ctrl : Agent
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*actions.ContinuousActions[0], Vector3.forward);
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
-        transform.localScale = Vector3.one * Mathf.Max(data.curhp, data.maxhp)/data.maxhp;
+        transform.localScale = Vector3.one * Mathf.Max(data.curhp, data.maxhp*2f)/data.maxhp;
         data.curhp -= data.consume * utilFunc.mtb_discount;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
@@ -112,7 +112,7 @@ public class predator_ctrl : Agent
             data.curhp += tmp_p.data.curhp*0.3f;
             AddReward(1);
             tmp_p.data.curhp = 0;
-            //pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
+            pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
         }
     }
 }
