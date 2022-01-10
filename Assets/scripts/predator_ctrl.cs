@@ -62,7 +62,7 @@ public class predator_ctrl : Agent
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*actions.ContinuousActions[0], Vector3.forward);
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
-        transform.localScale = Vector3.one * (data.curhp+1200f)/data.maxhp;
+        transform.localScale = Vector3.one * Mathf.Max(data.curhp, data.maxhp)/data.maxhp;
         data.curhp -= data.consume * utilFunc.mtb_discount;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){

@@ -135,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapBoarder_EZ1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051594, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7904023456802051595, guid: 155502f45c0be984fab6e77601135810,
         type: 3}
       propertyPath: m_RootOrder
@@ -271,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -363,6 +368,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapBoarder_EZ1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7904023456802051594, guid: 155502f45c0be984fab6e77601135810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7904023456802051595, guid: 155502f45c0be984fab6e77601135810,
         type: 3}
