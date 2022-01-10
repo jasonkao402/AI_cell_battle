@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5438523987746257933}
   - component: {fileID: 5438523987746257935}
+  - component: {fileID: 5675763124478245039}
   - component: {fileID: 4909668846568037501}
   - component: {fileID: 1177905639046009833}
-  - component: {fileID: 5675763124478245039}
   m_Layer: 8
   m_Name: prey_noAI0
   m_TagString: prey_tag
@@ -41,7 +41,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5438523987746257937}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -85,6 +85,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5675763124478245039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5438523987746257937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b88d8d24e2260048a297761a155da74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+    maxhp: 150
+    curhp: 0
+    consume: 0.4
+    sensor: 7.5
+    turnRate: -1.4
+  scanCD: 33
 --- !u!50 &4909668846568037501
 Rigidbody2D:
   serializedVersion: 4
@@ -132,22 +151,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &5675763124478245039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5438523987746257937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b88d8d24e2260048a297761a155da74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data:
-    maxhp: 1600
-    curhp: 0
-    consume: 1.1
-    sensor: 7.5
-    turnRate: -1.1
-  scanCD: 33

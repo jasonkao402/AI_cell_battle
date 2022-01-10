@@ -18,4 +18,20 @@ public static class Extensions
             setChildActive_recur(child.gameObject, state);
         }
     }
+    public static Collider2D ClosestCollider(Vector3 unitPosition, Collider2D[] tgtColliders)
+    {
+        float bestdstc = 999999.0f, tmpdstc;
+        Collider2D bestCollider = null;
+
+        foreach (Collider2D tgt in tgtColliders)
+        {
+            tmpdstc = Vector3.SqrMagnitude(unitPosition - tgt.transform.position);
+            if (tmpdstc < bestdstc)
+            {
+                bestdstc = tmpdstc;
+                bestCollider = tgt;
+            }
+        }
+        return bestCollider;
+    } 
 }

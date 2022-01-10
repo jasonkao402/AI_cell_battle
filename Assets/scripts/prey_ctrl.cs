@@ -70,7 +70,7 @@ public class prey_ctrl : MonoBehaviour
         rb.AddForce(data.consume * fwrd * transform.up);
 
         transform.localScale = Vector3.one * (data.curhp+1600f)/data.maxhp;
-        data.curhp -= data.consume * 0.1f;
+        data.curhp -= data.consume * utilFunc.mtb_discount;
         if(data.curhp < 0){
             tryDead();
         }
@@ -93,7 +93,6 @@ public class prey_ctrl : MonoBehaviour
         {
             data.curhp += emaid.foodValue;
             other.gameObject.SetActive(false);
-            emaid.food_pop--;
         }
     }
     private void OnCollisionEnter2D(Collision2D other) {

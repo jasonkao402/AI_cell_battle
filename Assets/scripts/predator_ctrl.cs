@@ -10,7 +10,6 @@ public class predator_ctrl : Agent
     objPool pooli;
     envMaid emaid;
     prey_ctrl tmp_p;
-    StatsRecorder stats;
     public geneData data = new geneData();
     Rigidbody2D rb;
     SpriteRenderer sr;
@@ -25,12 +24,6 @@ public class predator_ctrl : Agent
             ID += (char)('A'+Random.Range(0, 26));
         gameObject.name = $"w_{ID}";
     }
-    // protected override void OnEnable() {
-    //     if(!emaid) emaid = GetComponentInParent<envMaid>();
-    //     data.curhp = data.maxhp*Random.Range(0.9f, 1);
-    //     transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
-    //     transform.up = Random.insideUnitCircle;
-    // }
     void tryDead()
     {
         if(emaid.predator_pop > emaid.predator_init){
@@ -44,9 +37,8 @@ public class predator_ctrl : Agent
     }
     public override void Initialize()
     {
-        stats = Academy.Instance.StatsRecorder;
         pooli = objPool.Instance;
-        emaid = GetComponentInParent<envMaid>();
+        if(!emaid) emaid = GetComponentInParent<envMaid>();
         sen[0].RayLength = data.sensor;
         sen[1].RayLength = data.sensor;
     }
@@ -70,8 +62,8 @@ public class predator_ctrl : Agent
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*actions.ContinuousActions[0], Vector3.forward);
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
-        transform.localScale = Vector3.one * (data.curhp+2048f)/data.maxhp;
-        data.curhp -= data.consume * 0.333f;
+        transform.localScale = Vector3.one * (data.curhp+1200f)/data.maxhp;
+        data.curhp -= data.consume * utilFunc.mtb_discount;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
             //starve
@@ -89,7 +81,7 @@ public class predator_ctrl : Agent
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         ActionSegment<float> cActions = actionsOut.ContinuousActions;
-        tcol = ClosestCollider(
+        tcol = Extensions.ClosestCollider(
             transform.position, 
             Physics2D.OverlapCircleAll(transform.position, data.sensor*transform.localScale.x, 1<<8)
             );
@@ -120,26 +112,7 @@ public class predator_ctrl : Agent
             data.curhp += tmp_p.data.curhp*0.3f;
             AddReward(1);
             tmp_p.data.curhp = 0;
-            
-            stats.Add("wolf_population", emaid.predator_pop);
-            stats.Add("prey_population", emaid.prey_pop);
             //pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
         }
     }
-    Collider2D ClosestCollider(Vector3 unitPosition, Collider2D[] tgtColliders)
-    {
-        float bestdstc = 999999.0f, tmpdstc;
-        Collider2D bestCollider = null;
-
-        foreach (Collider2D tgt in tgtColliders)
-        {
-            tmpdstc = Vector3.SqrMagnitude(unitPosition - tgt.transform.position);
-            if (tmpdstc < bestdstc)
-            {
-                bestdstc = tmpdstc;
-                bestCollider = tgt;
-            }
-        }
-        return bestCollider;
-    } 
 }

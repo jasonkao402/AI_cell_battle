@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7904023455114641105}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 25, y: 25, z: 1}
   m_Children: []
   m_Father: {fileID: 7904023456802051595}
   m_RootOrder: 4
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 32, y: 32}
+  m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -108,8 +108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7904023455281532392}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -80, y: 0, z: 0}
-  m_LocalScale: {x: 324, y: 4, z: 1}
+  m_LocalPosition: {x: -100, y: 0, z: 0}
+  m_LocalScale: {x: 408, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 7904023456802051595}
   m_RootOrder: 2
@@ -217,8 +217,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7904023455795506498}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 80, y: 0, z: 0}
-  m_LocalScale: {x: 324, y: 4, z: 1}
+  m_LocalPosition: {x: 100, y: 0, z: 0}
+  m_LocalScale: {x: 408, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 7904023456802051595}
   m_RootOrder: 0
@@ -326,8 +326,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7904023455932002500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 80, z: 0}
-  m_LocalScale: {x: 324, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
+  m_LocalScale: {x: 408, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 7904023456802051595}
   m_RootOrder: 3
@@ -435,8 +435,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7904023455977711758}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -80, z: 0}
-  m_LocalScale: {x: 324, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: -100, z: 0}
+  m_LocalScale: {x: 408, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 7904023456802051595}
   m_RootOrder: 1
@@ -570,12 +570,13 @@ MonoBehaviour:
   prey: {fileID: 5438523987746257937, guid: 3a854a715fe519146a2f306816e2f883, type: 3}
   predator: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
     type: 3}
-  food_maxcd: 10
-  food_range: 70
-  foodValue: 4000
-  food_init: 30
-  prey_init: 60
-  predator_init: 1
-  food_pop: 0
+  food_maxcd: 99
+  food_range: 80
+  foodValue: 2500
+  food_init: 5
+  prey_init: 64
+  predator_init: 3
   prey_pop: 0
   predator_pop: 0
+  scan_max: 800
+  isRecord: 0
