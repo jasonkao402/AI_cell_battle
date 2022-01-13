@@ -30,23 +30,21 @@ public class predator_ctrl : Agent
             emaid.predator_pop--;
             gameObject.SetActive(false);
         }
-        else{
-            EndEpisode();
-            //OnEpisodeBegin();
-        }
+        EndEpisode();
     }
     public override void Initialize()
     {
         pooli = objPool.Instance;
-        if(!emaid) emaid = GetComponentInParent<envMaid>();
         sen[0].RayLength = data.sensor;
         sen[1].RayLength = data.sensor;
     }
     public override void OnEpisodeBegin()
     {
         data.curhp = data.maxhp;
-        transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
+        if(!emaid) emaid = GetComponentInParent<envMaid>();
+        else transform.localPosition = utilFunc.RandSq(emaid.food_range);
         transform.up = Random.insideUnitCircle;
+        rb.velocity = Vector2.zero;
     }
     public override void CollectObservations(VectorSensor sensor)
     {

@@ -16,8 +16,6 @@ public class envMaid : MonoBehaviour
     public float foodBase;
     public float foodValue;
     public float season_intv;
-    
-    //[Space(20)]
 
     [Header("Animal Limits")]
     public int predator_init;
@@ -26,16 +24,12 @@ public class envMaid : MonoBehaviour
     [Header("population")]
     public int predator_pop;
     public int prey_pop;
-    //[Space(20)]
 
     [Header("record result")]
     public bool isRecord;
     public int scan_max;
-    //[Space(20)]
-
     int scan_cur;
     float food_curcd, season_now;
-    // Update is called once per frame
     private void Start() {
         pooli = objPool.Instance;
         predator_pop = predator_init;
@@ -64,7 +58,7 @@ public class envMaid : MonoBehaviour
         {
             food_curcd = food_maxcd;
             season_now += 1f/season_intv;
-            foodValue = (Mathf.Sin(season_now)*0.1666f+1f)*foodBase;
+            foodValue = (Mathf.Sin(season_now)*0.15f+1f)*foodBase;
             for(int i = 0; i < food_amt; i++)
             {
                 pooli.TakePool("food", transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);

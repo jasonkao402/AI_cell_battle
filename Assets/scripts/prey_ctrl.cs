@@ -27,10 +27,11 @@ public class prey_ctrl : MonoBehaviour
         pooli = objPool.Instance;
     }
     private void OnEnable() {
+        data.curhp = data.maxhp*Random.Range(0.95f, 1.05f);
         if(!emaid) emaid = GetComponentInParent<envMaid>();
-        data.curhp = data.maxhp*Random.Range(0.9f, 1);
-        transform.localPosition = utilFunc.RandSq(utilFunc.spawnRange);
+        else transform.localPosition = utilFunc.RandSq(emaid.food_range);
         transform.up = Random.insideUnitCircle;
+        rb.velocity = Vector2.zero;
     }
     void tryDead()
     {
