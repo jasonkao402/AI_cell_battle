@@ -43,6 +43,7 @@ public class predator_ctrl : Agent
         data.curhp = data.maxhp;
         if(!emaid) emaid = GetComponentInParent<envMaid>();
         else transform.localPosition = utilFunc.RandSq(emaid.food_range);
+        
         transform.up = Random.insideUnitCircle;
         rb.velocity = Vector2.zero;
     }
@@ -60,7 +61,7 @@ public class predator_ctrl : Agent
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*actions.ContinuousActions[0], Vector3.forward);
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
-        transform.localScale = Vector3.one * Mathf.Max(data.curhp, data.maxhp*2f)/data.maxhp;
+        transform.localScale = Vector3.one * Mathf.Max(data.curhp/data.maxhp, 1.666f);
         data.curhp -= data.consume * utilFunc.mtb_discount;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
@@ -98,7 +99,7 @@ public class predator_ctrl : Agent
     {
         if(other.gameObject.CompareTag("wall_tag"))
         {
-            transform.localPosition = utilFunc.RandSq(60);
+            transform.localPosition = utilFunc.RandSq(emaid.food_range);
             AddReward(-0.03f);
         }
     }
@@ -110,7 +111,7 @@ public class predator_ctrl : Agent
             data.curhp += tmp_p.data.curhp*0.3f;
             AddReward(1);
             tmp_p.data.curhp = 0;
-            pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
+            //pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
         }
     }
 }

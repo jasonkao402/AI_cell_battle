@@ -11,7 +11,7 @@ public class geneData
 public static class utilFunc
 {
     static Vector3 tmppos;
-    public static float spawnRange = 80f, mtb_discount = 0.333f;
+    public static float mtb_discount = 0.333f;
     public static Vector3 RandSq(float rg)
     {
         tmppos.x = Random.Range(-rg, rg);

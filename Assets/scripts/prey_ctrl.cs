@@ -27,7 +27,7 @@ public class prey_ctrl : MonoBehaviour
         pooli = objPool.Instance;
     }
     private void OnEnable() {
-        data.curhp = data.maxhp*Random.Range(0.95f, 1.05f);
+        data.curhp = data.maxhp;
         if(!emaid) emaid = GetComponentInParent<envMaid>();
         else transform.localPosition = utilFunc.RandSq(emaid.food_range);
         transform.up = Random.insideUnitCircle;
@@ -70,7 +70,7 @@ public class prey_ctrl : MonoBehaviour
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*turn, Vector3.forward);
         rb.AddForce(data.consume * fwrd * transform.up);
 
-        transform.localScale = Vector3.one * (data.curhp+1600f)/data.maxhp;
+        transform.localScale = Vector3.one * Mathf.Max(data.curhp/data.maxhp, 2f);
         data.curhp -= data.consume * utilFunc.mtb_discount;
         if(data.curhp < 0){
             tryDead();
@@ -88,7 +88,7 @@ public class prey_ctrl : MonoBehaviour
         
         if(other.gameObject.CompareTag("wall_tag"))
         {
-            transform.localPosition = utilFunc.RandSq(60);
+            transform.localPosition = utilFunc.RandSq(emaid.food_range);
         }
         else if(other.gameObject.CompareTag("food_tag"))
         {

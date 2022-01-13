@@ -6,6 +6,9 @@ using System.IO;
 public class envMaid : MonoBehaviour
 {
     public GameObject food, prey, predator;
+    public Gradient colorg;
+    public SpriteRenderer sr;
+    [HideInInspector] public float foodValue;
     StreamWriter psr, wsr;
     objPool pooli;
 
@@ -14,7 +17,6 @@ public class envMaid : MonoBehaviour
     public float food_maxcd;
     public float food_range;
     public float foodBase;
-    public float foodValue;
     public float season_intv;
 
     [Header("Animal Limits")]
@@ -59,6 +61,7 @@ public class envMaid : MonoBehaviour
             food_curcd = food_maxcd;
             season_now += 1f/season_intv;
             foodValue = (Mathf.Sin(season_now)*0.15f+1f)*foodBase;
+            sr.color = colorg.Evaluate(Mathf.Sin(season_now)*0.5f+0.5f);
             for(int i = 0; i < food_amt; i++)
             {
                 pooli.TakePool("food", transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
