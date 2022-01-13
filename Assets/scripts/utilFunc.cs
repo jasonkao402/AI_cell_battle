@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class geneData
 {
-    public float maxhp, curhp, consume, sensor, turnRate;
+    public float maxhp, curhp, consume, sensor, turnRate, minSize;
     //public int max_killCD, cur_killCD;
 }
 public static class utilFunc

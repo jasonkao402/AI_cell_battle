@@ -70,7 +70,7 @@ public class prey_ctrl : MonoBehaviour
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*turn, Vector3.forward);
         rb.AddForce(data.consume * fwrd * transform.up);
 
-        transform.localScale = Vector3.one * Mathf.Max(data.curhp/data.maxhp, 2f);
+        transform.localScale = Vector3.one * Mathf.Max(data.curhp/data.maxhp, data.minSize);
         data.curhp -= data.consume * utilFunc.mtb_discount;
         if(data.curhp < 0){
             tryDead();

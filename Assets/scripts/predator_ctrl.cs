@@ -16,10 +16,12 @@ public class predator_ctrl : Agent
     Collider2D tcol;
     RayPerceptionSensorComponentBase[] sen = new RayPerceptionSensorComponentBase[2];
     string ID;
+    float posNorm = 1;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         sen = GetComponents<RayPerceptionSensorComponentBase>();
+        posNorm = transform.parent.localScale.x;
         for(int i = 0; i<2; i++)
             ID += (char)('A'+Random.Range(0, 26));
         gameObject.name = $"w_{ID}";
@@ -42,14 +44,16 @@ public class predator_ctrl : Agent
     {
         data.curhp = data.maxhp;
         if(!emaid) emaid = GetComponentInParent<envMaid>();
-        else transform.localPosition = utilFunc.RandSq(emaid.food_range);
-        
+        else{
+            transform.localPosition = utilFunc.RandSq(emaid.food_range);
+            posNorm = emaid.food_range;
+        }
         transform.up = Random.insideUnitCircle;
         rb.velocity = Vector2.zero;
     }
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(transform.localPosition/posNorm);
         sensor.AddObservation(transform.localRotation);
         sensor.AddObservation(rb.velocity.normalized);
         sensor.AddObservation(data.curhp/data.maxhp);
@@ -61,7 +65,7 @@ public class predator_ctrl : Agent
         transform.rotation *= Quaternion.AngleAxis(data.turnRate*actions.ContinuousActions[0], Vector3.forward);
         rb.AddForce(data.consume * actions.ContinuousActions[1] * transform.up);
 
-        transform.localScale = Vector3.one * Mathf.Max(data.curhp/data.maxhp, 1.666f);
+        transform.localScale = Vector3.one * Mathf.Max(data.curhp/data.maxhp, data.minSize);
         data.curhp -= data.consume * utilFunc.mtb_discount;
         AddReward(-1f/MaxStep);
         if(data.curhp < 0){
@@ -73,8 +77,8 @@ public class predator_ctrl : Agent
             //spawn baby
             AddReward(15);
             data.curhp = data.maxhp;
-            emaid.predator_pop++;
-            pooli.TakePool("wolf", transform.position, Quaternion.identity, transform.parent);
+            //emaid.predator_pop++;
+            //pooli.TakePool("wolf", transform.position, Quaternion.identity, transform.parent);
         }
     }
     public override void Heuristic(in ActionBuffers actionsOut)

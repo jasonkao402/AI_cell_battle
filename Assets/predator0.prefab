@@ -105,13 +105,14 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 3000
+  MaxStep: 5500
   data:
     maxhp: 1000
     curhp: 0
-    consume: 14
+    consume: 15
     sensor: 16
     turnRate: -5
+    minSize: 2.25
 --- !u!50 &7285269761912614808
 Rigidbody2D:
   serializedVersion: 4

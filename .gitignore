@@ -51,3 +51,4 @@ venv/results/ppo/*
 run_logs/
 
 Assets/ML-Agents/Timers/SampleScene_timers.json
+Assets/ML-Agents/Timers/SampleScene_timers.json

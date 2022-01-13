@@ -5,8 +5,8 @@ behaviors:
     hyperparameters:
       batch_size: 1024
       buffer_size: 10240
-      learning_rate: 0.001
-      beta: 0.01
+      learning_rate: 0.000666
+      beta: 0.00333
       epsilon: 0.2
       lambd: 0.95
       num_epoch: 5
@@ -41,10 +41,10 @@ behaviors:
           goal_conditioning_type: hyper
         learning_rate: 0.001
         encoding_size: null
-    init_path: results\TrainSet9\EatPrey
+    init_path: results\rework02\EatPrey
     keep_checkpoints: 3
     checkpoint_interval: 250000
-    max_steps: 1000000
+    max_steps: 750000
     time_horizon: 128
     summary_freq: 25000
     threaded: false
@@ -54,7 +54,7 @@ env_settings:
   env_path: build\AI_cell_battle
   env_args: null
   base_port: 5005
-  num_envs: 6
+  num_envs: 5
   seed: -1
 engine_settings:
   width: 84
@@ -66,8 +66,8 @@ engine_settings:
   no_graphics: true
 environment_parameters: null
 checkpoint_settings:
-  run_id: TrainSetA
-  initialize_from: TrainSet9
+  run_id: rework03
+  initialize_from: rework02
   load_model: false
   resume: false
   force: false

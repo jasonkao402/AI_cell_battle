@@ -41,7 +41,7 @@ behaviors:
           goal_conditioning_type: hyper
         learning_rate: 0.001
         encoding_size: null
-    init_path: results\TrainSet4\EatPrey
+    init_path: null
     keep_checkpoints: 3
     checkpoint_interval: 250000
     max_steps: 1000000
@@ -51,10 +51,10 @@ behaviors:
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: null
+  env_path: build\AI_cell_battle
   env_args: null
   base_port: 5005
-  num_envs: 1
+  num_envs: 6
   seed: -1
 engine_settings:
   width: 84
@@ -66,10 +66,10 @@ engine_settings:
   no_graphics: true
 environment_parameters: null
 checkpoint_settings:
-  run_id: TrainSet5
-  initialize_from: TrainSet4
+  run_id: rework01
+  initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false

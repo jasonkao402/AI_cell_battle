@@ -8,7 +8,6 @@ public class envMaid : MonoBehaviour
     public GameObject food, prey, predator;
     public Gradient colorg;
     public SpriteRenderer sr;
-    [HideInInspector] public float foodValue;
     StreamWriter psr, wsr;
     objPool pooli;
 
@@ -17,7 +16,9 @@ public class envMaid : MonoBehaviour
     public float food_maxcd;
     public float food_range;
     public float foodBase;
+    public float foodValue;
     public float season_intv;
+    public bool enableSeason;
 
     [Header("Animal Limits")]
     public int predator_init;
@@ -30,40 +31,41 @@ public class envMaid : MonoBehaviour
     [Header("record result")]
     public bool isRecord;
     public int scan_max;
-    int scan_cur;
+    int scan_cur, i;
     float food_curcd, season_now;
+    string ID = "";
     private void Start() {
         pooli = objPool.Instance;
         predator_pop = predator_init;
         prey_pop = prey_init;
-
+        foodValue = foodBase;
         if(isRecord)
         {
-            string ID = "";
-            for(int i = 0; i<3; i++)
+            for(i = 0; i<3; i++)
                 ID += (char)('A'+Random.Range(0, 26));
             psr = File.CreateText($"venv/output_p_{ID}.txt");
             wsr = File.CreateText($"venv/output_w_{ID}.txt");
         }
-        for(int i = 0; i<prey_init; i++)
+        for(i = 0; i<prey_init; i++)
         {
             pooli.TakePool("prey", transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
         }
-        for(int i = 0; i<predator_init; i++)
+        for(i = 0; i<predator_init; i++)
         {   
             pooli.TakePool("wolf", transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
         }
     }
     void Update()
     {
-        if(food_curcd < 0)
-        {
+        if(food_curcd < 0){
             food_curcd = food_maxcd;
-            season_now += 1f/season_intv;
-            foodValue = (Mathf.Sin(season_now)*0.15f+1f)*foodBase;
-            sr.color = colorg.Evaluate(Mathf.Sin(season_now)*0.5f+0.5f);
-            for(int i = 0; i < food_amt; i++)
+            if(enableSeason)
             {
+                season_now += 1f/season_intv;
+                foodValue = (Mathf.Sin(season_now)*0.15f+1f)*foodBase;
+                sr.color = colorg.Evaluate(Mathf.Sin(season_now)*0.5f+0.5f);
+            }
+            for(i = 0; i < food_amt; i++){
                 pooli.TakePool("food", transform.position+utilFunc.RandSq(food_range), Quaternion.identity, transform);
             }
         }

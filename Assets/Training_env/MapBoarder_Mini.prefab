@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5092330862620603473}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 36, y: 36, z: 1}
+  m_LocalScale: {x: 56, y: 56, z: 1}
   m_Children: []
   m_Father: {fileID: 5311356422291188729}
   m_RootOrder: 1
@@ -216,7 +216,7 @@ Transform:
   m_GameObject: {fileID: 5311356420767859491}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 12, y: 12, z: 1}
   m_Children: []
   m_Father: {fileID: 5311356422291188729}
   m_RootOrder: 0
@@ -321,11 +321,6 @@ MonoBehaviour:
   prey: {fileID: 5438523987746257937, guid: 3a854a715fe519146a2f306816e2f883, type: 3}
   predator: {fileID: 7656501115835453428, guid: 6ae861d366541054588745778282ca0e,
     type: 3}
-  food_amt: 5
-  food_maxcd: 1
-  food_range: 30
-  foodBase: 2800
-  season_intv: 80
   colorg:
     serializedVersion: 2
     key0: {r: 0, g: 1, b: 0.99067426, a: 1}
@@ -356,10 +351,15 @@ MonoBehaviour:
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
   sr: {fileID: 6710778724090085048}
+  food_amt: 5
+  food_maxcd: 1
+  food_range: 43
+  foodBase: 2000
   foodValue: 0
-  predator_init: 2
-  prey_init: 3
+  season_intv: 67
+  predator_init: 7
+  prey_init: 36
   predator_pop: 0
   prey_pop: 0
   isRecord: 0
-  scan_max: 80
+  scan_max: 1000

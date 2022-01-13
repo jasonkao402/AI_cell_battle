@@ -98,11 +98,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    maxhp: 2750
+    maxhp: 2800
     curhp: 0
-    consume: 1.5
+    consume: 1.45
     sensor: 7.5
-    turnRate: -1.4
+    turnRate: -1.45
+    minSize: 2
   scanCD: 50
 --- !u!50 &4909668846568037501
 Rigidbody2D:

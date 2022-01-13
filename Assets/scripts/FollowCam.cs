@@ -14,7 +14,7 @@ public class FollowCam : MonoBehaviour
         if(tgt)
             transform.position = Vector3.Lerp(transform.position, tgt.transform.position, l);
         if(!focus)
-            transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))*panSpeed;
+            transform.position += new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"))*panSpeed*Camera.main.orthographicSize;
     }
     private void Update() {
         Camera.main.orthographicSize *= (-Input.GetAxisRaw("Mouse ScrollWheel")+1);

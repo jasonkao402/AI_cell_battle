@@ -51,10 +51,10 @@ behaviors:
     self_play: null
     behavioral_cloning: null
 env_settings:
-  env_path: null
+  env_path: build\AI_cell_battle
   env_args: null
   base_port: 5005
-  num_envs: 1
+  num_envs: 6
   seed: -1
 engine_settings:
   width: 84
@@ -66,7 +66,7 @@ engine_settings:
   no_graphics: true
 environment_parameters: null
 checkpoint_settings:
-  run_id: TrainSet7
+  run_id: rework02
   initialize_from: null
   load_model: false
   resume: true
