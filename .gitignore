@@ -5,6 +5,7 @@
 [Bb]uilds/
 build_demo/
 Assets/AssetStoreTools*
+AI_wolf/
 
 # Visual Studio cache directory
 .vs/

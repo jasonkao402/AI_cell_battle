@@ -105,9 +105,9 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 5500
+  MaxStep: 6500
   data:
-    maxhp: 1000
+    maxhp: 950
     curhp: 0
     consume: 15
     sensor: 16
@@ -182,9 +182,9 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: 424324c351f0e08439801877e5a0ea32, type: 3}
   m_InferenceDevice: 3
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: EatPrey
   TeamId: 1
   m_UseChildSensors: 1

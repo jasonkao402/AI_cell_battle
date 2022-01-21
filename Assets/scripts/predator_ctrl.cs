@@ -77,8 +77,8 @@ public class predator_ctrl : Agent
             //spawn baby
             AddReward(15);
             data.curhp = data.maxhp;
-            //emaid.predator_pop++;
-            //pooli.TakePool("wolf", transform.position, Quaternion.identity, transform.parent);
+            emaid.predator_pop++;
+            pooli.TakePool("wolf", transform.position, Quaternion.identity, transform.parent);
         }
     }
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -115,7 +115,7 @@ public class predator_ctrl : Agent
             data.curhp += tmp_p.data.curhp*0.3f;
             AddReward(1);
             tmp_p.data.curhp = 0;
-            //pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
+            pooli.TakePool("splat", transform.position, Quaternion.identity, transform.root);
         }
     }
 }

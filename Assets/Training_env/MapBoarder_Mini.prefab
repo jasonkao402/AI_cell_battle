@@ -354,12 +354,13 @@ MonoBehaviour:
   food_amt: 5
   food_maxcd: 1
   food_range: 43
-  foodBase: 2000
+  foodBase: 2800
   foodValue: 0
   season_intv: 67
-  predator_init: 7
-  prey_init: 36
+  enableSeason: 1
+  predator_init: 2
+  prey_init: 4
   predator_pop: 0
   prey_pop: 0
   isRecord: 0
-  scan_max: 1000
+  scan_max: 200

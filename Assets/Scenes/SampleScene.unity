@@ -276,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &519420029
 AudioListener:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tgt: {fileID: 0}
-  panSpeed: 0.1
+  panSpeed: 0.05
   l: 0.06
 --- !u!20 &519420031
 Camera:
@@ -503,6 +503,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapBoarder_Mini (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5311356422291188728, guid: c990221b2a0c247468ab263b65766242,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5311356422291188729, guid: c990221b2a0c247468ab263b65766242,
         type: 3}
       propertyPath: m_RootOrder
@@ -572,6 +577,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapBoarder_Mini (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5311356422291188728, guid: c990221b2a0c247468ab263b65766242,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5311356422291188729, guid: c990221b2a0c247468ab263b65766242,
         type: 3}
       propertyPath: m_RootOrder
@@ -640,6 +650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MapBoarder_Mini (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311356422291188728, guid: c990221b2a0c247468ab263b65766242,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5311356422291188729, guid: c990221b2a0c247468ab263b65766242,
         type: 3}

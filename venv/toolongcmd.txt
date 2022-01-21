@@ -1,2 +1,2 @@
-mlagents-learn ai_configs\configuration.yaml --init=TrainSetA --env=build\AI_cell_battle --num-envs=6 --run-id=TrainSetB
+mlagents-learn ai_configs\configuration.yaml --init=TrainSetA --env=build\AI_cell_battle --num-envs=6 --run-id=rework02
 mlagents-learn ai_configs\configuration.yaml --run-id=TrainSetA --resume
